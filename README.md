@@ -14,8 +14,8 @@ Uputstva:
 * u OnInitDialog dodajte stupce u list kontrolu ([CListCtrl::InsertColumn](https://msdn.microsoft.com/en-us/library/wz5b6131.aspx))
 * na "Add" dodajte novi red u list kontrolu: 
   * tekst iz edit kontrola možete uzeti sa [GetDlgItemText](https://msdn.microsoft.com/en-us/library/xcws9sbs.aspx)
-  * CListCtrl::InsertItem dodaje red i postavlja tekst prvog stupca
-  * CListCtrl::SetItemText postavlja tekst u ostale stupce
+  * [CListCtrl::InsertItem](https://msdn.microsoft.com/en-us/library/8b9s12fc.aspx) dodaje red i postavlja tekst prvog stupca
+  * [CListCtrl::SetItemText](https://msdn.microsoft.com/en-us/library/sya0wk5k.aspx) postavlja tekst u ostale stupce
 * na "Delete" obrišite odabrani red ([CListCtrl::DeleteItem](https://msdn.microsoft.com/en-us/library/84fyba4z.aspx))
 * odabrani red možete saznati pomoću [CListCtrl::GetNextItem](https://msdn.microsoft.com/en-us/library/aa9fthz4.aspx) koristeći LVNI_SELECTED
 * odabir cijelog reda se postiže ex-stilom LVS_EX_FULLROWSELECT ([CListCtrl::SetExtendedStyle](https://msdn.microsoft.com/en-us/library/c7ezbf7b.aspx))
