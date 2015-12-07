@@ -14,20 +14,36 @@ MainDlg::MainDlg(CWnd* pParent /*=NULL*/)
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
+
 void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LIST1, ListKontrola);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
+	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnAddClicked)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
+	ListKontrola.InsertColumn(0, "Title", LVCFMT_CENTER, 120, -1);
+	ListKontrola.InsertColumn(1, "Year", LVCFMT_CENTER, 50, -1);
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
-	
 	return TRUE;
 }
 
+
+
+
+void MainDlg::OnAddClicked()
+{
+	// TODO: Add your control notification handler code here
+	CString s1, s2;
+	GetDlgItemText(IDC_EDIT1, s1);
+	GetDlgItemText(IDC_EDIT2, s1);
+	ListKontrola.InsertItem(0, s1);
+	//ListKontrola.SetItemText(1, 0, s1);
+}
