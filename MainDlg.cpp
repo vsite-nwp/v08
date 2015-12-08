@@ -43,23 +43,21 @@ BOOL MainDlg::OnInitDialog()
 
 void MainDlg::OnAdd()
 {
-	
+	int index;
 	CString title, year;
 	GetDlgItemText(IDC_EDIT1, title);
 	GetDlgItemText(IDC_EDIT2, year);
 
-	listCtrl.InsertItem(listCtrl.GetItemCount(), title);
-	listCtrl.SetItemText(listCtrl.GetItemCount() - 1, 1, year);
+	index = listCtrl.GetItemCount();
+
+	listCtrl.InsertItem(index, title);
+	listCtrl.SetItemText(index, 1, year);
+
+	listCtrl.SetItemState(index, LVIS_SELECTED, LVIS_SELECTED);
 }
 
 
 void MainDlg::OnDelete()
 {
-	if (listCtrl.GetSelectionMark() == -1){
-		//ako ništa nije selektirano selektiraj zadnji
-		listCtrl.SetSelectionMark(listCtrl.GetItemCount());
-	}
-	else{
-		listCtrl.DeleteItem(listCtrl.GetNextItem(-1, LVNI_SELECTED ));
-	}
+	listCtrl.DeleteItem(listCtrl.GetNextItem(-1, LVNI_SELECTED));
 }
