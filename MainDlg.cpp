@@ -59,5 +59,11 @@ void MainDlg::OnAdd()
 
 void MainDlg::OnDelete()
 {
+	int count;
+
 	listCtrl.DeleteItem(listCtrl.GetNextItem(-1, LVNI_SELECTED));
+
+	count = listCtrl.GetItemCount() - 1;
+	if (count >= 0)
+		listCtrl.SetItemState(count, LVIS_SELECTED, LVIS_SELECTED);
 }
