@@ -41,11 +41,13 @@ BOOL MainDlg::OnInitDialog()
 
 void MainDlg::Add()
 {
+	
 	CString s,s1;
+	int num_items = movies_lista.GetItemCount();
 	GetDlgItemText(IDC_EDIT1, s);
 	GetDlgItemText(IDC_EDIT2, s1);
-	movies_lista.InsertItem(0, s);
-	movies_lista.SetItemText(0,1,s1);
+	movies_lista.InsertItem(num_items,s);
+	movies_lista.SetItemText(num_items,1,s1);
 
 	
 }
@@ -53,7 +55,10 @@ void MainDlg::Add()
 
 void MainDlg::Delete()
 {
+	int num = movies_lista.GetNextItem(-1, LVNI_SELECTED);
+	if (num>=0) {
+		movies_lista.DeleteItem(num);
+	}
 	
-	movies_lista.DeleteItem(movies_lista.GetNextItem(-1, LVNI_SELECTED));
 	
 }
