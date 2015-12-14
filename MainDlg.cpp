@@ -30,6 +30,7 @@ BOOL MainDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 	ListKontrola.InsertColumn(0, "Title", LVCFMT_CENTER, 120, -1);
 	ListKontrola.InsertColumn(1, "Year", LVCFMT_CENTER, 50, -1);
+	ListKontrola.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	return TRUE;
@@ -43,7 +44,8 @@ void MainDlg::OnAddClicked()
 	// TODO: Add your control notification handler code here
 	CString s1, s2;
 	GetDlgItemText(IDC_EDIT1, s1);
-	GetDlgItemText(IDC_EDIT2, s1);
+	GetDlgItemText(IDC_EDIT2, s2);
 	ListKontrola.InsertItem(0, s1);
+	ListKontrola.SetItemText(0, 1, s2);
 	//ListKontrola.SetItemText(1, 0, s1);
 }
