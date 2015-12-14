@@ -52,8 +52,6 @@ void MainDlg::OnAdd()
 
 void MainDlg::OnDelete()
 {
-	int ind = Ctrl.GetNextItem(-1, LVNI_SELECTED);
-	if (ind >= 0) {
-		Ctrl.DeleteItem(ind);
-	}
+	Ctrl.DeleteItem(Ctrl.GetNextItem(-1, LVNI_SELECTED));
+	
 }
