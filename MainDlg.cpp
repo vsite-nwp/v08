@@ -34,6 +34,7 @@ BOOL MainDlg::OnInitDialog()
 
 	List.InsertColumn(0, _T("Title"), LVCFMT_LEFT, 200);
 	List.InsertColumn(1, _T("Year"), LVCFMT_LEFT, 50);
+	List.SetExtendedStyle(List.GetExtendedStyle() | LVS_EX_FULLROWSELECT);
 	
 	return TRUE;
 }
@@ -57,8 +58,3 @@ void MainDlg::OnBnClickedButton2()
 	List.DeleteItem(selected);
 }
 
-
-void MainDlg::OnNMClickList1(NMHDR *pNMHDR, LRESULT *pResult)
-{
-	List.SetExtendedStyle(List.GetExtendedStyle() | LVS_EX_FULLROWSELECT);
-}
