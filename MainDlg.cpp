@@ -23,6 +23,7 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnAddClicked)
+	ON_BN_CLICKED(IDC_BUTTON2, &MainDlg::OnDeleteClicked)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
@@ -48,4 +49,11 @@ void MainDlg::OnAddClicked()
 	ListKontrola.InsertItem(0, s1);
 	ListKontrola.SetItemText(0, 1, s2);
 	//ListKontrola.SetItemText(1, 0, s1);
+}
+
+
+void MainDlg::OnDeleteClicked()
+{
+	// TODO: Add your control notification handler code here
+	ListKontrola.DeleteItem(ListKontrola.GetNextItem(-1, LVNI_SELECTED));
 }

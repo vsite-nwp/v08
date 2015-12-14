@@ -17,4 +17,5 @@ protected:
 public:
 	CListCtrl ListKontrola;
 	afx_msg void OnAddClicked();
+	afx_msg void OnDeleteClicked();
 };
