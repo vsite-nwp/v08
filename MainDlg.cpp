@@ -56,8 +56,8 @@ void MainDlg::OnDelete()
 {
 	//  Add your control notification handler code here
 	int number_item = film.GetNextItem(-1, LVNI_SELECTED);
-	if (number_item > 0)
+	if (number_item >= 0)
 		film.DeleteItem(number_item);
-	film.DeleteItem(film.GetNextItem(-1, LVNI_SELECTED));
+	
 
 }
