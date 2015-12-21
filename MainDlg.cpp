@@ -44,16 +44,18 @@ void MainDlg::OnAddClicked()
 {
 	// TODO: Add your control notification handler code here
 	CString s1, s2;
+	int cnt = ListKontrola.GetItemCount();
 	GetDlgItemText(IDC_EDIT1, s1);
 	GetDlgItemText(IDC_EDIT2, s2);
-	ListKontrola.InsertItem(0, s1);
-	ListKontrola.SetItemText(0, 1, s2);
-	//ListKontrola.SetItemText(1, 0, s1);
+	ListKontrola.InsertItem(cnt, s1);
+	ListKontrola.SetItemText(cnt, 1, s2);
 }
 
 
 void MainDlg::OnDeleteClicked()
 {
 	// TODO: Add your control notification handler code here
-	ListKontrola.DeleteItem(ListKontrola.GetNextItem(-1, LVNI_SELECTED));
+	int next = ListKontrola.GetNextItem(-1, LVNI_SELECTED);
+	if (next)
+		ListKontrola.DeleteItem(next);
 }
