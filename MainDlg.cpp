@@ -56,6 +56,6 @@ void MainDlg::OnDeleteClicked()
 {
 	// TODO: Add your control notification handler code here
 	int next = ListKontrola.GetNextItem(-1, LVNI_SELECTED);
-	if (next)
+	if (next >= 0)
 		ListKontrola.DeleteItem(next);
 }
