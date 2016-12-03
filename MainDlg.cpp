@@ -50,6 +50,8 @@ void MainDlg::OnAdd()
 		return;
 	ListaFilmova.InsertItem(slijedeci, title);
 	ListaFilmova.SetItemText(slijedeci, 1, year);
+	SetDlgItemText(IDC_EDIT1, "");
+	SetDlgItemText(IDC_EDIT2, "");
 }
 
 
