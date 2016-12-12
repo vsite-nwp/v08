@@ -45,18 +45,22 @@ void MainDlg::addOnClick()
 {
 	CString title, year;
 
+	int n = cList.GetItemCount();
+
 	GetDlgItemTextA(IDC_EDIT1, title);
 	GetDlgItemTextA(IDC_EDIT2, year);
 	if (title == "" && year == "")
 		return;
-	cList.InsertItem(0, title);
-	cList.SetItemText(0, 1, year);
+	cList.InsertItem(n, title);
+	cList.SetItemText(n, 1, year);
 }
 
 
 void MainDlg::deleteOnClick()
 {
-	cList.DeleteItem(cList.GetNextItem(-1, LVNI_SELECTED));
+	int n = cList.GetNextItem(-1, LVNI_SELECTED);
+	if(n >= 0)
+		cList.DeleteItem(n);
 }
 
 
