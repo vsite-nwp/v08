@@ -32,8 +32,8 @@ BOOL MainDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	
-	ListaFilmova.InsertColumn(1, "Naslov");
-	ListaFilmova.InsertColumn(2, "Godina");
+	ListaFilmova.InsertColumn(1, "Naslov", LVCFMT_LEFT,90);
+	ListaFilmova.InsertColumn(2, "Godina", LVCFMT_LEFT,110);
 	return TRUE;
 }
 
@@ -42,14 +42,14 @@ void MainDlg::OnAddMovie() {
 	int index = ListaFilmova.GetItemCount();
 
 	GetDlgItemText(IDC_EDIT1, naslov);
-	GetDlgItemText(IDC_EDIT1, godina);
+	GetDlgItemText(IDC_EDIT2, godina);
 
 	if(naslov == "" || godina == "") return;
 
 	ListaFilmova.InsertItem(index, naslov);
-	ListaFilmova.SetItemText(index, 1, naslov);
+	ListaFilmova.SetItemText(index, 1, godina);
 }
 
 void MainDlg::OnRemoveMovie() {
-
+	ListaFilmova.DeleteItem(ListaFilmova.GetNextItem(-1, LVNI_SELECTED));
 }

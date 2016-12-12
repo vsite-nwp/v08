@@ -1,6 +1,7 @@
 #pragma once
 
 #include "resource.h"	
+#include "afxcmn.h"
 
 class MainDlg : public CDialog
 {
@@ -9,9 +10,9 @@ public:
 	enum { IDD = IDD_V8_DIALOG };
 
 	CListCtrl ListaFilmova;
-	void OnAddMovie();
-	void OnRemoveMovie();
-	//int provjeraFilma(CString naslov, CString godina);
+	afx_msg void OnAddMovie();
+	afx_msg void OnRemoveMovie();
+	
 
 protected:
 
