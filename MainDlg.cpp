@@ -29,7 +29,7 @@ BOOL MainDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	movie.InsertColumn(0, "Title", LVCFMT_CENTER, 141);
-	movie.InsertColumn(2, "Year", LVCFMT_CENTER, 50);
+	movie.InsertColumn(1, "Year", LVCFMT_CENTER, 50);
 	
 	
 	return TRUE;
