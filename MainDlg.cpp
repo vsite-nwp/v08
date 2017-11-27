@@ -17,6 +17,7 @@ MainDlg::MainDlg(CWnd* pParent /*=NULL*/)
 void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LIST1, movie);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
@@ -27,6 +28,9 @@ BOOL MainDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
+	movie.InsertColumn(0, "Title", LVCFMT_CENTER, 141);
+	movie.InsertColumn(2, "Year", LVCFMT_CENTER, 50);
+	
 	
 	return TRUE;
 }
