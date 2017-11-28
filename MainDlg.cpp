@@ -47,7 +47,6 @@ void MainDlg::OnBnClickedButton1()
 	controlv.InsertItem(0, text);
 	GetDlgItemText(IDC_EDIT2, text);
 	controlv.SetItemText(0, 1, text);
-	controlv.Invalidate();
 }
 
 
