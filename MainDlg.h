@@ -17,4 +17,5 @@ protected:
 public:
 	CListCtrl movieList;
 	afx_msg void OnAdd();
+	afx_msg void OnDelete();
 };

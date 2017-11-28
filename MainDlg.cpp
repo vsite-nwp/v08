@@ -22,6 +22,7 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnAdd)
+	ON_BN_CLICKED(IDC_BUTTON2, &MainDlg::OnDelete)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
@@ -30,9 +31,10 @@ BOOL MainDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
-	movieList.InsertColumn(0, "Title", LVCFMT_LEFT, 150);
-	movieList.InsertColumn(1, "Year", LVCFMT_LEFT, 50);
-	
+	movieList.InsertColumn(0, _T("Title"), LVCFMT_LEFT, 150);
+	movieList.InsertColumn(1, _T("Year"), LVCFMT_LEFT, 50);
+	movieList.SetExtendedStyle(LVS_EX_FULLROWSELECT);
+
 	return TRUE;
 }
 
@@ -41,8 +43,17 @@ BOOL MainDlg::OnInitDialog()
 void MainDlg::OnAdd()
 {
 	CString bfr;
+
 	GetDlgItemText(IDC_EDIT1, bfr);
 	movieList.InsertItem(0,bfr);
 	GetDlgItemText(IDC_EDIT2, bfr);
-	movieList.SetItemText(1, 0, bfr);
+	movieList.SetItemText(0, 1, bfr);
+
+	SetDlgItemText(IDC_EDIT1, "");
+	SetDlgItemText(IDC_EDIT2, "");
+}
+
+void MainDlg::OnDelete()
+{
+	movieList.DeleteItem(movieList.GetNextItem(-1, LVNI_SELECTED));
 }
