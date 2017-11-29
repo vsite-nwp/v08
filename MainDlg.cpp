@@ -42,14 +42,14 @@ void MainDlg::OnBnClickedButton1()
 {
 	CString str;	
 	GetDlgItemText(IDC_EDIT1, str);
-	title.InsertItem(0, str);
+	int row = title.InsertItem(title.GetItemCount(), str);
 	GetDlgItemText(IDC_EDIT2, str);
-	title.SetItemText(0, 1,str);
+	title.SetItemText(row, 1,str);
 }
 
 
 
 void MainDlg::OnBnClickedButton2()
-{	
+{		
 	title.DeleteItem(title.GetNextItem(-1, LVNI_SELECTED));
 }
