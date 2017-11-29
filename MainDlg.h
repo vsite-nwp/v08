@@ -1,6 +1,8 @@
 #pragma once
 
 #include "resource.h"	
+#include "afxcmn.h"
+#include "afxwin.h"
 
 class MainDlg : public CDialog
 {
@@ -13,4 +15,10 @@ protected:
 	HICON m_hIcon;
 	BOOL OnInitDialog() override;
 	DECLARE_MESSAGE_MAP()
+public:
+	CListCtrl movies;
+	afx_msg void OnAdd();
+	afx_msg void OnDelete();
+	CButton ButtonDelete;
+	afx_msg void OnLvnItemchangedList1(NMHDR *pNMHDR, LRESULT *pResult);
 };
