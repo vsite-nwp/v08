@@ -21,4 +21,7 @@ public:
 	afx_msg void OnDelete();
 	CButton ButtonDelete;
 	afx_msg void OnLvnItemchangedList1(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg void OnEnChangeEdit1();
+	CButton ButtonAdd;
+	afx_msg void OnEnChangeEdit2();
 };
