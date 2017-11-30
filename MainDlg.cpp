@@ -37,6 +37,8 @@ BOOL MainDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
+	ButtonDelete.EnableWindow(0);
+	ButtonAdd.EnableWindow(0);
 	movies.InsertColumn(0, _T("Title"),0,100,100);
 	movies.InsertColumn(1, _T("Year"),0,100,100);
 	movies.SetExtendedStyle(LVS_EX_FULLROWSELECT);
