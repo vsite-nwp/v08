@@ -14,11 +14,13 @@ MainDlg::MainDlg(CWnd* pParent /*=NULL*/)
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
+
 void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST1, movies);
 }
+
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnBnClickedButton1)
@@ -41,8 +43,6 @@ void MainDlg::OnOK(void)
 }
 
 
-
-
 BOOL MainDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
@@ -56,7 +56,6 @@ BOOL MainDlg::OnInitDialog()
 }
 
 
-
 void MainDlg::OnBnClickedButton1()
 {//add
 	HWND hWnd;
@@ -64,14 +63,14 @@ void MainDlg::OnBnClickedButton1()
 	GetDlgItemText(IDC_EDIT1, film);
 	GetDlgItemText(IDC_EDIT2, godina);
 	if (film != "" && godina != "") {
-		int n = movies.InsertItem(IDC_LIST1, film);
+		int n = movies.InsertItem(movies.GetItemCount(), film);
 		movies.SetItemText(n, 1, godina);
 		GetDlgItem(IDC_EDIT1)->SetWindowText(_T(""));
 		GetDlgItem(IDC_EDIT2)->SetWindowText(_T(""));
 	}
-	GetDlgItem(IDC_EDIT1, &hWnd);
-	::PostMessage(GetSafeHwnd(), WM_NEXTDLGCTL, (WPARAM)hWnd, TRUE);
+	GetDlgItem(IDC_EDIT1)->SetFocus();
 }
+
 
 void MainDlg::OnBnClickedButton2()
 {//delete
@@ -87,16 +86,8 @@ void MainDlg::OnLvnItemchangedList1(NMHDR *pNMHDR, LRESULT *pResult)
 {
 
 	LPNMLISTVIEW pNMLV = reinterpret_cast<LPNMLISTVIEW>(pNMHDR);
-
-	if (pNMLV->uNewState & LVIS_SELECTED)
-	{
-		GetDlgItem(IDC_BUTTON2)->EnableWindow(TRUE);
-	}
-	else 
-	{
-		GetDlgItem(IDC_BUTTON2)->EnableWindow(FALSE);
-	}
-
+	bool ispit = pNMLV->uNewState & LVIS_SELECTED ? TRUE : FALSE;
+	GetDlgItem(IDC_BUTTON2)->EnableWindow(ispit);
 	*pResult = 0;
 }
 
