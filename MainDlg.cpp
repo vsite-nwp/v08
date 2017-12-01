@@ -43,10 +43,11 @@ BOOL MainDlg::OnInitDialog()
 void MainDlg::OnBnClickedButton1()
 {
 	CString text;
+	int i=controlv.GetItemCount();
 	GetDlgItemText(IDC_EDIT1, text);
-	controlv.InsertItem(0, text);
+	controlv.InsertItem(i, text);
 	GetDlgItemText(IDC_EDIT2, text);
-	controlv.SetItemText(0, 1, text);
+	controlv.SetItemText(i, 1, text);
 }
 
 
