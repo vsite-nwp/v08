@@ -23,12 +23,12 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_BUTTON2, &MainDlg::OnBnClickedButton2)
+	ON_NOTIFY(LVN_ITEMCHANGED, IDC_LIST1, &MainDlg::OnLvnItemchangedList1)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
-	CListCtrl columns;
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	controlv.InsertColumn(0, "Title", 0, 95, -1);
@@ -52,5 +52,15 @@ void MainDlg::OnBnClickedButton1()
 
 void MainDlg::OnBnClickedButton2()
 {
-	controlv.DeleteItem(controlv.GetNextItem(-1, LVNI_SELECTED));
+	int i = controlv.GetNextItem(-1, LVNI_SELECTED);
+	if(i>=0)
+		controlv.DeleteItem(i);
+}
+
+
+void MainDlg::OnLvnItemchangedList1(NMHDR *pNMHDR, LRESULT *pResult)
+{
+	LPNMLISTVIEW pNMLV = reinterpret_cast<LPNMLISTVIEW>(pNMHDR);
+	// TODO: Add your control notification handler code here
+	*pResult = 0;
 }
