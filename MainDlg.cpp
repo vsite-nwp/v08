@@ -42,12 +42,13 @@ BOOL MainDlg::OnInitDialog()
 
 void MainDlg::OnAdd()
 {
-	CString bfr;
+	CString movieInfo;
+	int itemCnt = movieList.GetItemCount();
 
-	GetDlgItemText(IDC_EDIT1, bfr);
-	movieList.InsertItem(0,bfr);
-	GetDlgItemText(IDC_EDIT2, bfr);
-	movieList.SetItemText(0, 1, bfr);
+	GetDlgItemText(IDC_EDIT1, movieInfo);
+	movieList.InsertItem(itemCnt,movieInfo);
+	GetDlgItemText(IDC_EDIT2, movieInfo);
+	movieList.SetItemText(itemCnt, 1, movieInfo);
 
 	SetDlgItemText(IDC_EDIT1, "");
 	SetDlgItemText(IDC_EDIT2, "");
@@ -55,5 +56,10 @@ void MainDlg::OnAdd()
 
 void MainDlg::OnDelete()
 {
-	movieList.DeleteItem(movieList.GetNextItem(-1, LVNI_SELECTED));
+	int indSelected = movieList.GetNextItem(-1, LVNI_SELECTED);
+	if (indSelected == -1) {
+		MessageBox(_T("No items were selected!"), _T("Warning"), 0);
+		return;
+	}
+	movieList.DeleteItem(indSelected);
 }
