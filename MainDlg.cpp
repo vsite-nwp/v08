@@ -33,6 +33,7 @@ BOOL MainDlg::OnInitDialog()
 
 	listItem.InsertColumn(0, "Title", LVCFMT_LEFT, 120);
 	listItem.InsertColumn(1, "Year", LVCFMT_LEFT, 70);
+	listItem.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 	
 	return TRUE;
 }
