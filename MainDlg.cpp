@@ -51,14 +51,20 @@ void MainDlg::OnLvnItemchangedList1(NMHDR *pNMHDR, LRESULT *pResult)
 void MainDlg::Add()
 {
 	CString Txt;
+	int counter=MovVar.GetItemCount();
 	GetDlgItemText(IDC_EDIT1, Txt);
-	MovVar.InsertItem(0, (LPCTSTR)Txt);
+	MovVar.InsertItem(counter, Txt);
 	GetDlgItemText(IDC_EDIT2, Txt);
-	MovVar.SetItemText(0, 1, Txt);
+	MovVar.SetItemText(counter, 1, Txt);
+
 }
 
 void MainDlg::Delete()
 {
-	MovVar.DeleteItem(MovVar.GetNextItem(-1, LVNI_SELECTED));
+	int checkIndex = MovVar.GetNextItem(-1, LVNI_SELECTED);
+	if (checkIndex != -1)
+		MovVar.DeleteItem(MovVar.GetNextItem(-1, LVNI_SELECTED));
+	else
+		MessageBox("nothing selected", "!!!", 0);
 	
 }
