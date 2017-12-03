@@ -41,17 +41,26 @@ BOOL MainDlg::OnInitDialog()
 
 
 void MainDlg::Add()
-{	
+{
 	int  cnt = listItem.GetItemCount();
-	CString prijenos;
-	GetDlgItemText(IDC_EDIT1, prijenos);
-	listItem.InsertItem(cnt, prijenos);
-	GetDlgItemText(IDC_EDIT2, prijenos);
-	listItem.SetItemText(cnt, 1, prijenos);
+	CString prijenos1, prijenos2;
+	
+	GetDlgItemText(IDC_EDIT1, prijenos1);
+	GetDlgItemText(IDC_EDIT2, prijenos2);
+
+	if (!prijenos1.IsEmpty() && !prijenos2.IsEmpty())
+	{
+		listItem.InsertItem(cnt, prijenos1);
+		listItem.SetItemText(cnt, 1, prijenos2);
+	}
+	else
+		MessageBox("Moraju biti unešena oba polja!", "NEPOTPUN UNOS", MB_ICONEXCLAMATION);
 }
 
 
 void MainDlg::Delete()
 {
-	listItem.DeleteItem(listItem.GetNextItem(-1, LVNI_SELECTED));
+	int provjera = listItem.GetNextItem(-1, LVNI_SELECTED);
+	if (provjera > -1)
+		listItem.DeleteItem(provjera);
 }
