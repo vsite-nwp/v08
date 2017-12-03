@@ -21,6 +21,8 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
+	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::Add)
+	ON_BN_CLICKED(IDC_BUTTON2, &MainDlg::Delete)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
@@ -35,3 +37,20 @@ BOOL MainDlg::OnInitDialog()
 	return TRUE;
 }
 
+
+
+void MainDlg::Add()
+{	
+	int  cnt = listItem.GetItemCount();
+	CString prijenos;
+	GetDlgItemText(IDC_EDIT1, prijenos);
+	listItem.InsertItem(cnt, prijenos);
+	GetDlgItemText(IDC_EDIT2, prijenos);
+	listItem.SetItemText(cnt, 1, prijenos);
+}
+
+
+void MainDlg::Delete()
+{
+	listItem.DeleteItem(listItem.GetNextItem(-1, LVNI_SELECTED));
+}

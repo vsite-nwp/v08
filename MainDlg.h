@@ -16,4 +16,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CListCtrl listItem;
+	afx_msg void Add();
+	afx_msg void Delete();
 };
