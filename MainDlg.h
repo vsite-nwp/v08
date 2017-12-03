@@ -16,4 +16,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CListCtrl movies;
+	afx_msg void AddRow();
+	afx_msg void DeleteRow();
 };
