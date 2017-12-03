@@ -30,10 +30,8 @@ BOOL MainDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
-	CString text = "Title";
-	movies.InsertColumn(0, (LPCTSTR)text, LVCFMT_LEFT,140);
-	text = "Year";
-	movies.InsertColumn(1, (LPCTSTR)text, LVCFMT_CENTER, 50);
+	movies.InsertColumn(0, "Title", LVCFMT_LEFT,140);
+	movies.InsertColumn(1, "Year", LVCFMT_CENTER, 50);
 	movies.SetExtendedStyle(movies.GetExtendedStyle() | LVS_EX_FULLROWSELECT);
 	return TRUE;
 }
