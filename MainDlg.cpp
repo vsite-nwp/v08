@@ -44,8 +44,8 @@ void MainDlg::OnBnClickedButton1()
 	CString year;
 	GetDlgItemText(IDC_EDIT1, title);
 	GetDlgItemText(IDC_EDIT2, year);
-	int y = movie.InsertItem(movie.GetItemCount(), title);
-	movie.SetItemText(y, 1, year);
+	movie.InsertItem(movie.GetItemCount(), title);
+	movie.SetItemText(movie.GetItemCount()-1, 1, year);
 }
 
 
