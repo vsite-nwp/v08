@@ -36,6 +36,7 @@ BOOL MainDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	movie.InsertColumn(0, "Title", LVCFMT_CENTER, 141);
 	movie.InsertColumn(1, "Year", LVCFMT_CENTER, 50);
+	movie.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 	return TRUE;
 }
 
@@ -45,13 +46,12 @@ void MainDlg::OnBnClickedButton1()
 {	
 	GetDlgItemText(IDC_EDIT1, title);
 	GetDlgItemText(IDC_EDIT2, year);
-	movie.InsertItem(0,title);
+	movie.InsertItem(0, title);
 	movie.SetItemText(0, 1, year);
 }
 
 
 void MainDlg::OnBnClickedButton2()
 {
-	
-	
+	movie.DeleteItem(movie.GetNextItem(-1, LVNI_SELECTED));
 }
