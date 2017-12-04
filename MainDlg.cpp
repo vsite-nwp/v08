@@ -53,6 +53,8 @@ void MainDlg::OnBnClickedButton1()
 void MainDlg::OnBnClickedButton2()
 {
 	int index = movie.GetNextItem(-1, LVNI_SELECTED);
-	if (index != -1)
+	if (index != -1) {
 		movie.DeleteItem(index);
+		x--;
+	}
 }
