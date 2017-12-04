@@ -55,5 +55,7 @@ void MainDlg::OnClickedButton1()
 
 void MainDlg::OnClickedButton2()
 {//delete
-	List.DeleteItem(List.GetNextItem(-1, LVNI_SELECTED));
+	int i = List.GetNextItem(-1, LVNI_SELECTED);
+	if(i!=-1)
+		List.DeleteItem(i);
 }
