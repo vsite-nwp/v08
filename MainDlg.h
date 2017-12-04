@@ -18,6 +18,5 @@ public:
 	CListCtrl movie;
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnBnClickedButton2();
-	CString title;
-	CString year;
+	int x = 0;
 };

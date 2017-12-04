@@ -10,8 +10,6 @@ static char THIS_FILE[] = __FILE__;
 
 MainDlg::MainDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(MainDlg::IDD, pParent)
-	, title(_T("Enter Movie Title"))
-	, year("0000")
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -20,8 +18,6 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST1, movie);
-	DDX_Text(pDX, IDC_EDIT1, title);
-	DDX_Text(pDX, IDC_EDIT2, year);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
@@ -44,14 +40,19 @@ BOOL MainDlg::OnInitDialog()
 
 void MainDlg::OnBnClickedButton1()
 {	
+	CString title;
+	CString year;
 	GetDlgItemText(IDC_EDIT1, title);
 	GetDlgItemText(IDC_EDIT2, year);
-	movie.InsertItem(0, title);
-	movie.SetItemText(0, 1, year);
+	movie.InsertItem(x, title);
+	movie.SetItemText(x, 1, year);
+	x++;
 }
 
 
 void MainDlg::OnBnClickedButton2()
 {
-	movie.DeleteItem(movie.GetNextItem(-1, LVNI_SELECTED));
+	int index = movie.GetNextItem(-1, LVNI_SELECTED);
+	if (index != -1)
+		movie.DeleteItem(index);
 }
