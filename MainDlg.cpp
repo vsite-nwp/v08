@@ -52,6 +52,6 @@ void MainDlg::OnBnClickedButton1()
 void MainDlg::OnBnClickedButton2()
 {	
 	int selected = title.GetNextItem(-1, LVNI_SELECTED);
-	if (selected > -1);
+	if (selected > -1)
 		title.DeleteItem(selected);
 }
