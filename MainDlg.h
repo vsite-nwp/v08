@@ -18,5 +18,4 @@ public:
 	CListCtrl movie;
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnBnClickedButton2();
-	int x = 0;
 };

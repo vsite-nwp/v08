@@ -44,17 +44,14 @@ void MainDlg::OnBnClickedButton1()
 	CString year;
 	GetDlgItemText(IDC_EDIT1, title);
 	GetDlgItemText(IDC_EDIT2, year);
-	movie.InsertItem(x, title);
-	movie.SetItemText(x, 1, year);
-	x++;
+	int y = movie.InsertItem(movie.GetItemCount(), title);
+	movie.SetItemText(y, 1, year);
 }
 
 
 void MainDlg::OnBnClickedButton2()
 {
 	int index = movie.GetNextItem(-1, LVNI_SELECTED);
-	if (index != -1) {
+	if (index != -1)
 		movie.DeleteItem(index);
-		x--;
-	}
 }
