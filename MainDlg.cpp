@@ -63,7 +63,7 @@ void MainDlg::Delete()
 {
 	int checkIndex = MovVar.GetNextItem(-1, LVNI_SELECTED);
 	if (checkIndex != -1)
-		MovVar.DeleteItem(MovVar.GetNextItem(-1, LVNI_SELECTED));
+		MovVar.DeleteItem(checkIndex);
 	else
 		MessageBox("nothing selected", "!!!", 0);
 	
