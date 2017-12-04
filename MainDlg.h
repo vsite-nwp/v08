@@ -1,6 +1,8 @@
 #pragma once
 
 #include "resource.h"	
+#include "afxcmn.h"
+#include "afxwin.h"
 
 class MainDlg : public CDialog
 {
@@ -13,4 +15,8 @@ protected:
 	HICON m_hIcon;
 	BOOL OnInitDialog() override;
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnClickedButton1();
+	CListCtrl List;
+	afx_msg void OnClickedButton2();
 };
