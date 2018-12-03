@@ -46,12 +46,15 @@ void MainDlg::OnBnClickedButton1()
 	CString year;
 	GetDlgItemText(IDC_EDIT1, title);
 	GetDlgItemText(IDC_EDIT2, year);
-	Control.InsertItem(Control.GetItemCount(), title);
-	Control.SetItemText(Control.GetItemCount()-1, 1, year);
+	int counter = Control.GetItemCount();
+	Control.InsertItem(counter, title);
+	Control.SetItemText(counter, 1, year);
 }
 
 
 void MainDlg::OnBnClickedButton2()
 {
-	Control.DeleteItem(Control.GetNextItem(-1, LVNI_SELECTED));
+	int item = Control.GetNextItem(-1, LVNI_SELECTED);
+	if(item != -1)
+	Control.DeleteItem(item);
 }
