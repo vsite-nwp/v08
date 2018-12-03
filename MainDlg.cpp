@@ -21,6 +21,8 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
+	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BUTTON2, &MainDlg::OnBnClickedButton2)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
@@ -28,10 +30,39 @@ BOOL MainDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
-	list_control.InsertColumn(0,_T("Naslov"),0,100);
-	list_control.InsertColumn(1, _T("Godina"), 0, 50);
+	list_control.InsertColumn(0,_T("Naslov"),LVCFMT_LEFT,100);
+	list_control.InsertColumn(1, _T("Godina"), LVCFMT_CENTER, 100);
+	list_control.SetExtendedStyle(list_control.GetExtendedStyle() | LVS_EX_FULLROWSELECT);
 
 	
 	return TRUE;
 }
 
+
+void MainDlg::OnBnClickedButton1()
+{
+	// TODO: Add your control notification handler code here
+	CString naslov, godina;
+	
+	
+	GetDlgItemText(IDC_EDIT1, naslov);
+	GetDlgItemText(IDC_EDIT2, godina);
+
+	int stupac = list_control.InsertItem(list_control.GetItemCount(), naslov);
+
+	list_control.SetItemText(stupac, 0,naslov);
+	list_control.SetItemText(stupac, 1, godina);
+
+
+	SetDlgItemText(IDC_EDIT1,"");
+	SetDlgItemText(IDC_EDIT2,"");
+
+
+}
+
+void MainDlg::OnBnClickedButton2()
+{
+	// TODO: Add your control notification handler code here
+
+	list_control.DeleteItem(list_control.GetNextItem(-1, LVNI_SELECTED));
+}
