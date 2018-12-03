@@ -21,8 +21,8 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
-	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnBnClickedButton1)
-	ON_BN_CLICKED(IDC_BUTTON2, &MainDlg::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::Add)
+	ON_BN_CLICKED(IDC_BUTTON2, &MainDlg::Delete)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
@@ -39,9 +39,8 @@ BOOL MainDlg::OnInitDialog()
 }
 
 
-void MainDlg::OnBnClickedButton1()
+void MainDlg::Add()
 {
-	// TODO: Add your control notification handler code here
 	CString naslov, godina;
 	
 	
@@ -60,9 +59,9 @@ void MainDlg::OnBnClickedButton1()
 
 }
 
-void MainDlg::OnBnClickedButton2()
+void MainDlg::Delete()
 {
-	// TODO: Add your control notification handler code here
+	
 
 	list_control.DeleteItem(list_control.GetNextItem(-1, LVNI_SELECTED));
 }
