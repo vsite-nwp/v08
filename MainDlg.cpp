@@ -17,6 +17,7 @@ MainDlg::MainDlg(CWnd* pParent /*=NULL*/)
 void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LIST1, list_control);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
@@ -27,6 +28,9 @@ BOOL MainDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
+	list_control.InsertColumn(0,_T("Naslov"),0,100);
+	list_control.InsertColumn(1, _T("Godina"), 0, 50);
+
 	
 	return TRUE;
 }
