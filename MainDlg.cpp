@@ -33,7 +33,6 @@ BOOL MainDlg::OnInitDialog()
 	list_control.InsertColumn(0,_T("Naslov"),LVCFMT_LEFT,100);
 	list_control.InsertColumn(1, _T("Godina"), LVCFMT_CENTER, 100);
 	list_control.SetExtendedStyle(list_control.GetExtendedStyle() | LVS_EX_FULLROWSELECT);
-
 	
 	return TRUE;
 }
@@ -42,8 +41,7 @@ BOOL MainDlg::OnInitDialog()
 void MainDlg::Add()
 {
 	CString naslov, godina;
-	
-	
+		
 	GetDlgItemText(IDC_EDIT1, naslov);
 	GetDlgItemText(IDC_EDIT2, godina);
 
@@ -52,16 +50,11 @@ void MainDlg::Add()
 	list_control.SetItemText(stupac, 0,naslov);
 	list_control.SetItemText(stupac, 1, godina);
 
-
 	SetDlgItemText(IDC_EDIT1,"");
 	SetDlgItemText(IDC_EDIT2,"");
-
-
 }
 
 void MainDlg::Delete()
-{
-	
-
+{	
 	list_control.DeleteItem(list_control.GetNextItem(-1, LVNI_SELECTED));
 }
