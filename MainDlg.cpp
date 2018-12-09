@@ -2,7 +2,7 @@
 #include "v8.h"
 #include "MainDlg.h"
 #include <string>
-#include <map>
+#include <list>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -23,7 +23,7 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 bool MainDlg::IsMovieNameValid(CString movieName) {
-	if (!movieName.Compare("")) {
+	if (movieName.IsEmpty()) {
 		MessageBox(_T("Unesite ime filma."));
 		return false;
 	}
@@ -37,12 +37,10 @@ BEGIN_MESSAGE_MAP(MainDlg, CDialog)
 END_MESSAGE_MAP()
 
 void MainDlg::AddColumnsName() {
-	std::map<std::string, int> columnMap;
-	columnMap.insert(std::make_pair(_T("Title"), 130));
-	columnMap.insert(std::make_pair(_T("Year"), 50));
+	std::list<std::pair<std::string, int>> columnList = { std::make_pair(_T("Title"), 130), std::make_pair(_T("Year"), 50) };
 
 	int index = 0;
-	for (auto const& x : columnMap)
+	for (auto const& x : columnList)
 		list.InsertColumn(index++, x.first.c_str(), LVCFMT_CENTER, x.second);
 }
 
