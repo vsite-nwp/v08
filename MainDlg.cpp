@@ -47,7 +47,7 @@ void MainDlg::Add()
 
 	int stupac = list_control.InsertItem(list_control.GetItemCount(), naslov);
 
-	list_control.SetItemText(stupac, 0,naslov);
+	
 	list_control.SetItemText(stupac, 1, godina);
 
 	SetDlgItemText(IDC_EDIT1,"");
@@ -55,6 +55,8 @@ void MainDlg::Add()
 }
 
 void MainDlg::Delete()
-{	
-	list_control.DeleteItem(list_control.GetNextItem(-1, LVNI_SELECTED));
+{
+	int temp_delete;
+	temp_delete=list_control.GetNextItem(-1, LVNI_SELECTED);
+	if (temp_delete != -1)list_control.DeleteItem(temp_delete);
 }
