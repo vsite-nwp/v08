@@ -17,17 +17,55 @@ MainDlg::MainDlg(CWnd* pParent /*=NULL*/)
 void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LIST1, List);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
+ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnBnClickedButton1)
+ON_BN_CLICKED(IDC_BUTTON2,&MainDlg::OnBnClickedButton2)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
 {
+	
 	CDialog::OnInitDialog();
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	
+	List.InsertColumn(0,_T("Title"),LVCFMT_LEFT,80);
+	List.InsertColumn(1,_T("Year"),LVCFMT_CENTER,80);
+	
+	List.SetExtendedStyle(LVS_EX_FULLROWSELECT);
+
 	return TRUE;
+}
+
+void MainDlg::OnBnClickedButton1()
+{
+	
+	CString text1,text2;
+	GetDlgItemText(IDC_EDIT1,text1);
+	GetDlgItemText(IDC_EDIT2, text2);
+
+	if (strlen(text1) != 0 && strlen(text2) != 0) {
+
+		int i = List.GetItemCount();
+
+		List.InsertItem(i, text1);
+		List.SetItemText(i, 1, text2);
+	}
+
+	SetDlgItemText(IDC_EDIT1, "");
+	SetDlgItemText(IDC_EDIT2, "");
+}
+void MainDlg::OnBnClickedButton2()
+{
+	
+
+	List.DeleteItem(List.GetNextItem(-1,LVNI_SELECTED));
+
+	
+
+
 }
 
