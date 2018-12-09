@@ -47,10 +47,9 @@ void MainDlg::OnBnClickedButton1()
 	GetDlgItemText(IDC_EDIT1,text1);
 	GetDlgItemText(IDC_EDIT2, text2);
 
-	if (strlen(text1) != 0 && strlen(text2) != 0) {
+	if (!text1.IsEmpty() && !text2.IsEmpty()) {
 
 		int i = List.GetItemCount();
-
 		List.InsertItem(i, text1);
 		List.SetItemText(i, 1, text2);
 	}
@@ -61,11 +60,12 @@ void MainDlg::OnBnClickedButton1()
 void MainDlg::OnBnClickedButton2()
 {
 	
+	int selektiran = List.GetNextItem(-1, LVNI_SELECTED);
+	if (selektiran != -1) {
+		List.DeleteItem(selektiran);
+	}
 
-	List.DeleteItem(List.GetNextItem(-1,LVNI_SELECTED));
 
 	
-
-
 }
 
