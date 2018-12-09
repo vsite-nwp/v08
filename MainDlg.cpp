@@ -32,8 +32,8 @@ BOOL MainDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);        // Set small icon
 
 	Control1.SetExtendedStyle(LVS_EX_FULLROWSELECT);
-	Control1.InsertColumn(0, "Title", LVA_ALIGNLEFT, 150);
-	Control1.InsertColumn(1, "Year", LVA_ALIGNLEFT, 75);
+	Control1.InsertColumn(0, "Title", LVCFMT_LEFT, 150);
+	Control1.InsertColumn(1, "Year", LVCFMT_LEFT, 75);
 
 	return TRUE;
 }
@@ -56,5 +56,9 @@ void MainDlg::OnBnClickedButton1()
 
 void MainDlg::OnBnClickedButton2()
 {
-	Control1.DeleteItem(Control1.GetNextItem(-1, LVNI_SELECTED));
+	int index = Control1.GetNextItem(-1, LVNI_SELECTED);
+	if (index > -1)
+	{
+		Control1.DeleteItem(index);
+	}
 }
