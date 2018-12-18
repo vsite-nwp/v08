@@ -17,4 +17,5 @@ public:
 	CListCtrl list1;
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnBnClickedButton2();
+	int i = 0;
 };

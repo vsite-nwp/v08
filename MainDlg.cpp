@@ -48,15 +48,23 @@ void MainDlg::OnBnClickedButton1()
 	GetDlgItemText(IDC_EDIT2, year);
 
 	if (movie != "" && year != "") {
-		list1.InsertItem(0, movie);
-		list1.SetItemText(0, 1, year);
+		list1.InsertItem(i, movie);
+		list1.SetItemText(i, 1, year);
+		++i;
 	}else
 		MessageBox("Nisu popunjena sva polja!","Upozorenje",MB_OK);
+
+	
 
 }
 
 void MainDlg::OnBnClickedButton2()
 {
-		list1.DeleteItem(list1.GetNextItem(-1, LVNI_SELECTED));
+	int index = list1.GetNextItem(-1, LVNI_SELECTED);
+	if (index != -1) {
+		list1.DeleteItem(index);
+		--i;
+	}
+		
 	
 }
