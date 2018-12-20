@@ -48,7 +48,9 @@ void MainDlg::OnClickedButton1()
 	int index = list.GetItemCount();
 	list.InsertItem(index, text1);
 	list.SetItemText(index,1, text2);
-	
+	list.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
+	SetDlgItemText(IDC_EDIT1, " ");
+	SetDlgItemText(IDC_EDIT2, " ");
 }
 
 
