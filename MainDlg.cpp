@@ -35,7 +35,7 @@ BOOL MainDlg::OnInitDialog()
 	cLista.InsertColumn(0, "Naslov", LVCFMT_LEFT, 100, 20);
 	cLista.InsertColumn(1, "Godina", LVCFMT_CENTER, 60, 10);
 	cLista.SetExtendedStyle(LVS_EX_FULLROWSELECT);
-
+	
 	return TRUE;
 }
 
