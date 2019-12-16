@@ -13,4 +13,11 @@ protected:
 	HICON m_hIcon;
 	BOOL OnInitDialog() override;
 	DECLARE_MESSAGE_MAP()
+public:
+	CString name;
+	CString year;
+	afx_msg void OnBnClickedButton1();
+	CListCtrl ListControl;
+	afx_msg void Add();
+	afx_msg void Delete();
 };
