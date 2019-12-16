@@ -36,7 +36,7 @@ BOOL MainDlg::OnInitDialog()
 	mList.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 	GotoDlgCtrl(GetDlgItem(IDC_EDIT1));
 	
-	return TRUE;
+	return FALSE;
 }
 
 void MainDlg::OnClickedButton1()
