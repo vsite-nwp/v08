@@ -34,6 +34,7 @@ BOOL MainDlg::OnInitDialog()
 	mList.InsertColumn(0, _T("Name"), LVCFMT_LEFT, 100);
 	mList.InsertColumn(1, _T("Year"), LVCFMT_LEFT, 50);
 	mList.SetExtendedStyle(LVS_EX_FULLROWSELECT);
+	GotoDlgCtrl(GetDlgItem(IDC_EDIT1));
 	
 	return TRUE;
 }
@@ -50,6 +51,7 @@ void MainDlg::OnClickedButton1()
 		mList.SetItemText(mCount, 1, movieYear);
 		SetDlgItemText(IDC_EDIT1, "");
 		SetDlgItemText(IDC_EDIT2, "");
+		GotoDlgCtrl(GetDlgItem(IDC_EDIT1));
 	}
 }
 
