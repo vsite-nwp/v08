@@ -34,6 +34,7 @@ BOOL MainDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 	ListControl.InsertColumn(0, "Title", 0, 130, 0);
 	ListControl.InsertColumn(1, "Year", 0, 50, 0);
+	ListControl.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	
@@ -42,8 +43,7 @@ BOOL MainDlg::OnInitDialog()
 
 void MainDlg::Add()
 {
-	GetDlgItemText(IDC_EDIT1, name);
-	GetDlgItemText(IDC_EDIT2, year);
+	UpdateData(true);
 	int count = ListControl.GetItemCount();
 	ListControl.InsertItem(count,name);
 	ListControl.SetItemText(count, 1, year);
@@ -52,6 +52,7 @@ void MainDlg::Add()
 
 void MainDlg::Delete()
 {
-	int item = ListControl.GetNextItem(-1, ListControl.SetExtendedStyle(LVS_EX_FULLROWSELECT));
-	ListControl.DeleteItem(item);
+	int item = ListControl.GetNextItem(-1,LVNI_SELECTED);
+	if(item != -1)
+		ListControl.DeleteItem(item);
 }
