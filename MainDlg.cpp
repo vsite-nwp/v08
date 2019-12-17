@@ -62,7 +62,7 @@ void MainDlg::OnAddButton()
 void MainDlg::OnDeleteButton()
 {
 	const int returnValue = mListControl.GetNextItem(-1, LVNI_SELECTED);
-	!mListControl.DeleteItem(returnValue);
+	mListControl.DeleteItem(returnValue);
 
 	if (!mListControl.GetItemCount())
 	{
