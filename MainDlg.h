@@ -13,4 +13,12 @@ protected:
 	HICON m_hIcon;
 	BOOL OnInitDialog() override;
 	DECLARE_MESSAGE_MAP()
+public:
+	CString ime;
+	CString godina;
+	CListCtrl makeList;
+	
+	afx_msg void OnBnClickedButton1();
+	afx_msg void OnBnClickedButton2();
+	
 };
