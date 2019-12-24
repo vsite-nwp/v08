@@ -32,6 +32,7 @@ BOOL MainDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	member.InsertColumn(0, _T("Ime"), LVCFMT_LEFT, 100);
 	member.InsertColumn(1, _T("Godina"), LVCFMT_LEFT, 100);
+	member.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 	return TRUE;
 }
 
@@ -52,6 +53,7 @@ void MainDlg::OnBnClickedButton1()
 
 void MainDlg::OnBnClickedButton2()
 {
-	member.DeleteItem(member.GetNextItem(-1, LVNI_SELECTED));
+	if (member.GetNextItem(-1, LVNI_SELECTED) != -1)
+		member.DeleteItem(member.GetNextItem(-1, LVNI_SELECTED));
 	
 }
