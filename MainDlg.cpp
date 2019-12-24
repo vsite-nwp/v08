@@ -57,21 +57,18 @@ BOOL MainDlg::OnInitDialog()
 
 void MainDlg::OnBnClickedButton1()
 {
+	UpdateData();
 	int countItems = makeList.GetItemCount();
-	GetDlgItemText(IDC_EDIT1, ime);
-	GetDlgItemText(IDC_EDIT2, godina);
 	makeList.InsertItem(countItems, ime);
 	makeList.SetItemText(countItems, 1, godina);
-	/*odabrani red možete saznati pomoću 
-	CListCtrl::GetNextItem koristeći LVNI_SELECTED
-odabir cijelog reda se postiže ex-stilom LVS_EX_FULLROWSELECT 
-(CListCtrl::SetExtendedStyle)*/
+	
 }
 
 
 void MainDlg::OnBnClickedButton2()
 {
-	makeList.DeleteItem(makeList.GetNextItem(-1, makeList.SetExtendedStyle(LVS_EX_FULLROWSELECT)));
+	if(makeList.GetNextItem(-1,LVNI_SELECTED)!=-1)
+		makeList.DeleteItem(makeList.GetNextItem(-1, (LVNI_SELECTED)));
 }
 
 
