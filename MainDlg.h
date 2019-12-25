@@ -5,6 +5,9 @@
 class MainDlg : public CDialog
 {
 public:
+	CListCtrl listaFilmova;
+	void OnClickedButton1();
+	void OnClickedButton2();
 	MainDlg(CWnd* pParent = NULL);	// standard constructor
 	enum { IDD = IDD_V8_DIALOG };
 
