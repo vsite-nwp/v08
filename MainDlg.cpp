@@ -18,8 +18,6 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST1, listCtrl);
-	DDX_Control(pDX, IDC_EDIT1, titleCtrl);
-	DDX_Control(pDX, IDC_EDIT2, yearCtrl);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
@@ -35,7 +33,7 @@ BOOL MainDlg::OnInitDialog()
 
 	listCtrl.InsertColumn(0, "Title", 0, 140, 0);
 	listCtrl.InsertColumn(1, "Year", 0, 50, 0);
-	
+	listCtrl.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 
 	return TRUE;
 }
