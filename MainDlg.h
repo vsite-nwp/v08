@@ -1,6 +1,6 @@
 #pragma once
 
-#include "resource.h"	
+#include "resource.h"
 
 class MainDlg : public CDialog
 {
@@ -13,4 +13,12 @@ protected:
 	HICON m_hIcon;
 	BOOL OnInitDialog() override;
 	DECLARE_MESSAGE_MAP()
+	int noOfRows;
+	int checkInput(CString& title, CString& year);
+public:
+	CListCtrl list;
+	CString title;
+	afx_msg void AddRow();
+	afx_msg void DeleteRow();
+	unsigned int year;
 };
