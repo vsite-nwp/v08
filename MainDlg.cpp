@@ -10,6 +10,8 @@ static char THIS_FILE[] = __FILE__;
 
 MainDlg::MainDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(MainDlg::IDD, pParent)
+	, title_tekst(_T(""))
+	, year_tekst(_T(""))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -18,9 +20,14 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST1, lctrl);
+	DDX_Text(pDX, IDC_EDIT1, title_tekst);
+	DDX_Text(pDX, IDC_EDIT2, year_tekst);
+	DDX_Control(pDX, IDC_EDIT1, ed1_ctrl);
+	DDX_Control(pDX, IDC_EDIT2, ed2_ctrl);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
+	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnBnClickedButton1)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
@@ -30,8 +37,18 @@ BOOL MainDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	lctrl.InsertColumn(0, _T("Title"), LVCFMT_LEFT,120);
 	lctrl.InsertColumn(1, _T("Year"), LVCFMT_CENTER,60);
-
-	
 	return TRUE;
 }
 
+
+
+void MainDlg::OnBnClickedButton1()
+{
+	static int cntr = 0;
+	GetDlgItemText(IDC_EDIT1, title_tekst);
+	GetDlgItemText(IDC_EDIT2, year_tekst);
+	lctrl.InsertItem(cntr,title_tekst);
+	lctrl.SetItemText(cntr++, 1, year_tekst);
+	ed1_ctrl.SetWindowText(_T(""));
+	ed2_ctrl.SetWindowText(_T(""));
+}
