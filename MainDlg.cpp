@@ -21,6 +21,8 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
+	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BUTTON2, &MainDlg::OnBnClickedButton2)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()

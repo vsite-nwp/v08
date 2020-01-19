@@ -15,4 +15,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CListCtrl c_list;
+	afx_msg void OnBnClickedButton1();
+	afx_msg void OnBnClickedButton2();
 };
