@@ -52,3 +52,8 @@ void MainDlg::OnBnClickedButton1() {
 	}
 }
 
+void MainDlg::OnBnClickedButton2() {
+	if (c_list.GetNextItem(-1, LVNI_SELECTED) != -1)
+		c_list.DeleteItem(c_list.GetNextItem(-1, LVNI_SELECTED));
+}
+
