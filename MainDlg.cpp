@@ -38,3 +38,17 @@ BOOL MainDlg::OnInitDialog()
 	return TRUE;
 }
 
+void MainDlg::OnBnClickedButton1() {
+	CString mTitle, mYear;
+	GetDlgItemText(IDC_EDIT1, mTitle);
+	GetDlgItemText(IDC_EDIT2, mYear);
+
+	if (!mTitle.IsEmpty() && !mYear.IsEmpty()) {
+		int i = c_list.GetItemCount();
+		c_list.InsertItem(i, mTitle);
+		c_list.SetItemText(i, 1, mYear);
+		SetDlgItemText(IDC_EDIT1, "");
+		SetDlgItemText(IDC_EDIT2, "");
+	}
+}
+
