@@ -17,6 +17,7 @@ MainDlg::MainDlg(CWnd* pParent /*=NULL*/)
 void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LIST1, c_list);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
@@ -27,6 +28,10 @@ BOOL MainDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
+
+	c_list.InsertColumn(0, _T("Title"), LVCFMT_LEFT, 100);
+	c_list.InsertColumn(1, _T("Year"), LVCFMT_CENTER, 100);
+	c_list.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 	
 	return TRUE;
 }
