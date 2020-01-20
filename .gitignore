@@ -7,3 +7,4 @@
 *.sqlite
 *.suo
 *.user
+/v8.sln
