@@ -8,6 +8,10 @@ public:
 	MainDlg(CWnd* pParent = NULL);	// standard constructor
 	enum { IDD = IDD_V8_DIALOG };
 
+	CListCtrl data;
+	afx_msg void onButtonClickAdd();
+	afx_msg void onButtonClickDelete();
+
 protected:
 	void DoDataExchange(CDataExchange* pDX) override;
 	HICON m_hIcon;
