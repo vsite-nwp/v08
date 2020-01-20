@@ -9,7 +9,6 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 MainDlg::MainDlg(CWnd* pParent /*=NULL*/) : CDialog(MainDlg::IDD, pParent)
-, year(2020)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -21,7 +20,7 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT1, title);
 	DDV_MaxChars(pDX, title, 50);
 	DDX_Text(pDX, IDC_EDIT2, year);
-	DDV_MinMaxUInt(pDX, year, 1895, 2020);	
+	DDV_MaxChars(pDX, year, 4);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
@@ -41,48 +40,24 @@ BOOL MainDlg::OnInitDialog()
 	return TRUE;
 }
 
-int MainDlg::checkInput(CString& title, CString& year)
-{
-	if (title == "" || year == "")
-	{
-		MessageBox(_T("Nemože!"), "Vojko kaže...", MB_OK | MB_ICONWARNING);
-		return 1;
-	}
-	title.TrimLeft();
-	year.TrimLeft(" +");
-	if (title.IsEmpty())
-	{
-		MessageBox(_T("...the final frontier..."), "Space...", MB_OK | MB_ICONWARNING);
-		return 2;
-	}
-	year.Format("%d", _ttoi(year));
-	if (!UpdateData(true))
-		return 3;
-	return 0;
-}
-
-
 void MainDlg::AddRow()
 {
+	UpdateData();
 	noOfRows = list.GetItemCount();
-	CString title, year;
-	GetDlgItemText(IDC_EDIT1, title);
-	GetDlgItemText(IDC_EDIT2, year);
-	if (checkInput(title, year))
-		return;
 	list.InsertItem(noOfRows, title);
 	list.SetItemText(noOfRows, 1, year);
-	SetDlgItemText(IDC_EDIT1, "");
-	SetDlgItemText(IDC_EDIT2, "");
+	SetDlgItemText(IDC_EDIT1, _T(""));
+	SetDlgItemText(IDC_EDIT2, _T(""));
 	GetDlgItem(IDC_EDIT1)->SetFocus();
 	GetDlgItem(IDC_BUTTON2)->EnableWindow(1);
 }
 
-
 void MainDlg::DeleteRow()
 {
-	if (list.GetNextItem(-1, LVNI_SELECTED) != -1)
-		list.DeleteItem((list.GetNextItem(-1, LVNI_SELECTED)));
+	int sel = list.GetNextItem(-1, LVNI_SELECTED);
+	if (sel != -1)
+		list.DeleteItem(sel);
+	noOfRows = list.GetItemCount();
 	GetDlgItem(IDC_EDIT1)->SetFocus();
 	if (noOfRows == 0)
 		GetDlgItem(IDC_BUTTON2)->EnableWindow(0);

@@ -14,11 +14,9 @@ protected:
 	BOOL OnInitDialog() override;
 	DECLARE_MESSAGE_MAP()
 	int noOfRows;
-	int checkInput(CString& title, CString& year);
+	CString title, year;
 public:
 	CListCtrl list;
-	CString title;
 	afx_msg void AddRow();
 	afx_msg void DeleteRow();
-	unsigned int year;
 };
