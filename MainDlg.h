@@ -4,6 +4,9 @@
 
 class MainDlg : public CDialog
 {
+private:
+	void AddColumnsName();
+	void SetEditToDefaultValue();
 public:
 	MainDlg(CWnd* pParent = NULL);	// standard constructor
 	enum { IDD = IDD_V8_DIALOG };
@@ -13,4 +16,8 @@ protected:
 	HICON m_hIcon;
 	BOOL OnInitDialog() override;
 	DECLARE_MESSAGE_MAP()
+public:
+	CListCtrl list;
+	afx_msg void OnBnClickedButton1();
+	afx_msg void OnBnClickedButton2();
 };
