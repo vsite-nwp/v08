@@ -41,7 +41,7 @@ void MainDlg::dodaj() {
 	GetDlgItemText(IDC_EDIT1, naslov);
 	GetDlgItemText(IDC_EDIT2, godina);
 
-	if (naslov && godina) {
+	if (!naslov.IsEmpty() && !godina.IsEmpty()) {
 		int count = m.GetItemCount();
 		m.InsertItem(count, naslov);
 		m.SetItemText(count, 1, godina);
@@ -51,7 +51,8 @@ void MainDlg::dodaj() {
 }
 
 void MainDlg::izbrisi() {
-	if (m.GetNextItem(-1, LVNI_SELECTED) != -1) {
-		m.DeleteItem(m.GetNextItem(-1, LVNI_SELECTED));
+	int x = m.GetNextItem(-1, LVNI_SELECTED);
+	if (x != -1) {
+		m.DeleteItem(x);
 	}
 }
