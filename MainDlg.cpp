@@ -18,8 +18,6 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST1, list);
-	DDX_Control(pDX, IDC_BUTTON1, buttonAdd);
-	DDX_Control(pDX, IDC_BUTTON2, buttonDelete);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
@@ -33,6 +31,8 @@ BOOL MainDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
+	list.SetExtendedStyle(LVS_EX_FULLROWSELECT);
+
 	list.InsertColumn(0, "Title");
 	list.SetColumnWidth(0, 150);
 
@@ -43,10 +43,10 @@ BOOL MainDlg::OnInitDialog()
 }
 
 void MainDlg::Add() {
-	TCHAR Title[512], Year[512];
+	CString Title, Year;
 
-	::GetDlgItemText(*this, IDC_EDIT1, Title, 512);
-	::GetDlgItemText(*this, IDC_EDIT2, Year, 512);
+	GetDlgItemText(IDC_EDIT1, Title);
+	GetDlgItemText(IDC_EDIT2, Year);
 
 	list.InsertItem(0, Title);
 	list.SetItemText(0, 1, Year);
@@ -56,5 +56,6 @@ void MainDlg::Add() {
 }
 
 void MainDlg::Del() {
-	list.DeleteItem(list.GetNextItem(-1, LVNI_SELECTED));
+	const int index = list.GetNextItem(-1, LVNI_SELECTED);
+	list.DeleteItem(index);
 }
