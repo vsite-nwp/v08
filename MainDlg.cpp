@@ -18,10 +18,6 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST1, movie_list);
-	DDX_Control(pDX, IDC_BUTTON1, add_btn);
-	DDX_Control(pDX, IDC_BUTTON2, delete_btn);
-	DDX_Control(pDX, IDC_EDIT1, title_edit);
-	DDX_Control(pDX, IDC_EDIT2, year_edit);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
@@ -53,18 +49,18 @@ void MainDlg::AddButtonClicked()
 		int list_size = movie_list.GetItemCount();
 		movie_list.InsertItem(list_size, title_to_add);
 		movie_list.SetItemText(list_size, 1, year_to_add);
-		SetDlgItemText(IDC_EDIT1, "");
-		SetDlgItemText(IDC_EDIT2, "");
+
+		//Selects last inserted item
+		movie_list.SetItemState(list_size, LVNI_SELECTED | LVIS_FOCUSED, LVIS_SELECTED | LVIS_FOCUSED);
 	}
 	else 
 	{
 		MessageBox("Title or year cannot be empty", "Error inserting!", MB_OK); 
-		SetDlgItemText(IDC_EDIT1, "");
-		SetDlgItemText(IDC_EDIT2, "");
 	}
+	SetDlgItemText(IDC_EDIT1, "");
+	SetDlgItemText(IDC_EDIT2, "");
 }
 
-//LVIS_SELECTED
 
 void MainDlg::DeleteButtonClicked()
 {
@@ -73,11 +69,11 @@ void MainDlg::DeleteButtonClicked()
 	{
 		movie_list.DeleteItem(selected_row_index);
 
-		//TODO: Implement selecting row above the deleted row
-		/*if (selected_row_index > 0)
+		//Selecting row above the deleted row
+		if (selected_row_index > 0)
 		{
-			movie_list.SetItemState(selected_row_index - 1, LVNI_SELECTED, 0);
-		}*/
+			movie_list.SetItemState(selected_row_index - 1, LVNI_SELECTED | LVIS_FOCUSED, LVIS_SELECTED | LVIS_FOCUSED);
+		}
 		return;
 	}
 	MessageBox("No row is selected!", "Error!", MB_OK);
