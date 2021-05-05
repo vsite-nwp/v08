@@ -57,5 +57,6 @@ void MainDlg::Add() {
 
 void MainDlg::Del() {
 	const int index = list.GetNextItem(-1, LVNI_SELECTED);
-	list.DeleteItem(index);
+	if (index >= 0)
+		list.DeleteItem(index);
 }
