@@ -34,6 +34,7 @@ BOOL MainDlg::OnInitDialog()
 	if (movie_list.InsertColumn(0, _T("Title"), LVCFMT_LEFT, 100) == -1) return FALSE;
 	if (movie_list.InsertColumn(1, _T("Year"), LVCFMT_CENTER, 60) == -1) return FALSE;
 	movie_list.SetExtendedStyle(LVS_EX_FULLROWSELECT);
+	movie_list.ModifyStyle(0, LVS_SHOWSELALWAYS);
 	
 	return TRUE;
 }
