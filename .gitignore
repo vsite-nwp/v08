@@ -7,3 +7,6 @@
 *.sqlite
 *.suo
 *.user
+*.db-shm
+*.db-wal
+*.aps
