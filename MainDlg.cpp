@@ -48,9 +48,8 @@ void MainDlg::onAdd() {
 		return;
 	if (year.IsEmpty())
 		return;
-
-	cListCtrl.SetItemText(0, 1, year);
 	cListCtrl.InsertItem(0, title);
+	cListCtrl.SetItemText(0, 1, year);
 
 	SetDlgItemText(IDC_EDIT1, "");
 	SetDlgItemText(IDC_EDIT2, "");
