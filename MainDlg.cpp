@@ -45,24 +45,21 @@ BOOL MainDlg::OnInitDialog()
 	return TRUE;
 }
 
-
-
 void MainDlg::OnAddClickedButton()
 {
 	UpdateData();
-	CString t=(CString)(std::to_wstring(yearEdit).c_str());
 
+	int const items = movieList.GetItemCount();
 	if(yearEdit > 1900 && yearEdit < 2021){
 
-		movieList.InsertItem(0, titleEdit);
-		movieList.SetItemText(0, 1, t);
+		movieList.InsertItem(items, titleEdit);
+		movieList.SetItemText(items, 1, std::to_string(yearEdit).c_str());
 
 		yearEdit = 0;
 		SetDlgItemText(IDC_EDIT1, "");
 		SetDlgItemText(IDC_EDIT2, "");
 	}
 }
-
 
 void MainDlg::OnDeleteClickedButton()
 {
