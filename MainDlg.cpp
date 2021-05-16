@@ -57,6 +57,7 @@ void MainDlg::OnAddClickedButton()
 		movieList.InsertItem(0, titleEdit);
 		movieList.SetItemText(0, 1, t);
 
+		yearEdit = 0;
 		SetDlgItemText(IDC_EDIT1, "");
 		SetDlgItemText(IDC_EDIT2, "");
 	}
