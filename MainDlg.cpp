@@ -51,7 +51,9 @@ void MainDlg::OnAddClickedButton()
 {
 	UpdateData();
 	CString t=(CString)(std::to_wstring(yearEdit).c_str());
-	if(strcmp (t,"0")!= 0 && yearEdit > 1900 && yearEdit < 2021){
+
+	if(yearEdit > 1900 && yearEdit < 2021){
+
 		movieList.InsertItem(0, titleEdit);
 		movieList.SetItemText(0, 1, t);
 
