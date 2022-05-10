@@ -17,9 +17,12 @@ MainDlg::MainDlg(CWnd* pParent /*=NULL*/)
 void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LIST1, movieList);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
+	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnAddClickedButton)
+	ON_BN_CLICKED(IDC_BUTTON2, &MainDlg::OnDeleteClickedButton)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
@@ -27,7 +30,35 @@ BOOL MainDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
-	
+	movieList.InsertColumn(0, _T("Name"), LVCFMT_CENTER, 90);
+	movieList.InsertColumn(1, _T("Year"), LVCFMT_CENTER, 45);
+	movieList.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 	return TRUE;
 }
 
+
+
+void MainDlg::OnAddClickedButton()
+{
+	CString name, year, msg;
+	msg = "Enter name & year";
+	static int movieIndex = 0;
+	GetDlgItemText(IDC_EDIT1, name);
+	GetDlgItemText(IDC_EDIT2, year);
+	if (!(name.IsEmpty() || year.IsEmpty())) {
+		movieList.InsertItem(movieIndex, name);
+		movieList.SetItemText(movieIndex, LVCFMT_RIGHT, year);
+		movieIndex++;
+		SetDlgItemText(IDC_EDIT1, "");
+		SetDlgItemText(IDC_EDIT2, "");
+	}
+	else
+		MessageBox(msg,"Warning:", MB_OK | MB_ICONWARNING);
+
+}
+
+
+void MainDlg::OnDeleteClickedButton()
+{
+	movieList.DeleteItem(movieList.GetNextItem(-1, LVNI_SELECTED));
+}
