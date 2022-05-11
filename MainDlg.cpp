@@ -40,25 +40,28 @@ BOOL MainDlg::OnInitDialog()
 
 void MainDlg::OnAddClickedButton()
 {
-	CString name, year, msg;
-	msg = "Enter name & year";
+	CString name, year;
 	static int movieIndex = 0;
 	GetDlgItemText(IDC_EDIT1, name);
 	GetDlgItemText(IDC_EDIT2, year);
+	const int elementAtIndex = movieList.GetItemCount();
 	if (!(name.IsEmpty() || year.IsEmpty())) {
-		movieList.InsertItem(movieIndex, name);
-		movieList.SetItemText(movieIndex, LVCFMT_RIGHT, year);
-		movieIndex++;
+		movieList.InsertItem(elementAtIndex, name);
+		movieList.SetItemText(elementAtIndex, 1, year);
 		SetDlgItemText(IDC_EDIT1, "");
 		SetDlgItemText(IDC_EDIT2, "");
 	}
 	else
-		MessageBox(msg,"Warning:", MB_OK | MB_ICONWARNING);
-
+		MessageBox("Enter name & year", "Warning:", MB_OK | MB_ICONWARNING);
 }
 
 
 void MainDlg::OnDeleteClickedButton()
 {
-	movieList.DeleteItem(movieList.GetNextItem(-1, LVNI_SELECTED));
+	const int item = movieList.GetNextItem(-1, LVNI_SELECTED);
+	if (item != -1)
+		movieList.DeleteItem(item);
 }
+
+
+
