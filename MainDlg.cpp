@@ -59,6 +59,10 @@ void MainDlg::BtnAdd()
 
 void MainDlg::BtnDelete()
 {
-	List.DeleteItem(List.GetNextItem(-1, LVNI_SELECTED)); // -1 finds the first item that matches the flag specified
+	const int itemIndex = List.GetNextItem(-1, LVNI_SELECTED); // -1 finds the first item that matches the flag specified returns -1 if no match
+	if (itemIndex != -1) { 
+		List.DeleteItem(itemIndex);
+	}
+	return;
 }
 
