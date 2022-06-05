@@ -15,5 +15,6 @@ BOOL V8App::InitInstance()
 	MainDlg dlg;
 	m_pMainWnd = &dlg;
 	dlg.DoModal();
+	
 	return FALSE;
 }

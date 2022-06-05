@@ -31,3 +31,4 @@ BOOL MainDlg::OnInitDialog()
 	return TRUE;
 }
 
+
