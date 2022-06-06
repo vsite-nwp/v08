@@ -55,7 +55,7 @@ void MainDlg::AddButton()
 	lista.SetItemText(inputIndex, 1, movieYear);
 	SetDlgItemText(IDC_EDIT1, "");
 	SetDlgItemText(IDC_EDIT2, "");
-	GetDlgItem(IDC_BUTTON2)->EnableWindow(1);
+	GetDlgItem(IDC_BUTTON2)->EnableWindow(true);
 
 }
 
@@ -64,5 +64,5 @@ void MainDlg::DeleteButton()
 {
 	lista.DeleteItem(lista.GetNextItem(-1, LVNI_SELECTED));
 	if (lista.GetItemCount() == 0)
-		GetDlgItem(IDC_BUTTON2)->EnableWindow(0);
+		GetDlgItem(IDC_BUTTON2)->EnableWindow(false);
 }
