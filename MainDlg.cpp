@@ -61,7 +61,8 @@ void MainDlg::AddButton()
 
 
 void MainDlg::DeleteButton()
-{
+{	
+	if (lista.GetNextItem(-1, LVNI_SELECTED) == -1) return;
 	lista.DeleteItem(lista.GetNextItem(-1, LVNI_SELECTED));
 	if (lista.GetItemCount() == 0)
 		GetDlgItem(IDC_BUTTON2)->EnableWindow(false);
