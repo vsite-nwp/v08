@@ -21,6 +21,7 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
+	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnBnClickedButton1)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
@@ -34,4 +35,27 @@ BOOL MainDlg::OnInitDialog()
 	movies.InsertColumn(1, "Year", LVCFMT_CENTER, 100, 20);
 
 	return TRUE;
+}
+
+void MainDlg::OnBnClickedButton1()
+{
+	// TODO: Add your control notification handler code here
+
+	CString movieTitle;
+	//int movieYear;
+	CString movieYear;
+
+	//uzimam iz edit kontrole
+	GetDlgItemText(IDC_EDIT1, movieTitle);
+	//GetDlgItemInt(IDC_EDIT2, movieYear);
+	//(IDC_EDIT2, _T(movieYear);
+	GetDlgItemText(IDC_EDIT2, movieYear);
+
+	//dodavanje reda i postavljenje teksta prvog stupca
+	int count = movies.GetItemCount();
+	if (movieTitle.IsEmpty() || movieYear.IsEmpty())
+		return;
+
+	movies.InsertItem(count,movieTitle);
+	movies.SetItemText(count,1,movieYear); //subitem je stupac
 }

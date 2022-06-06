@@ -15,4 +15,5 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CListCtrl movies;
+	afx_msg void OnBnClickedButton1();
 };
