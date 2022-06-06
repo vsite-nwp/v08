@@ -41,19 +41,13 @@ BOOL MainDlg::OnInitDialog()
 
 void MainDlg::OnBnClickedButton1()
 {
-	// TODO: Add your control notification handler code here
 
 	CString movieTitle;
-	//int movieYear;
 	CString movieYear;
 
-	//uzimam iz edit kontrole
 	GetDlgItemText(IDC_EDIT1, movieTitle);
-	//GetDlgItemInt(IDC_EDIT2, movieYear);
-	//(IDC_EDIT2, _T(movieYear);
 	GetDlgItemText(IDC_EDIT2, movieYear);
 
-	//dodavanje reda i postavljenje teksta prvog stupca
 	int count = movies.GetItemCount();
 	if (movieTitle.IsEmpty() || movieYear.IsEmpty())
 		return;
@@ -61,7 +55,6 @@ void MainDlg::OnBnClickedButton1()
 	movies.InsertItem(count,movieTitle);
 	movies.SetItemText(count,1,movieYear); //subitem je stupac
 
-	//ocisti edit box
 	SetDlgItemText(IDC_EDIT1, NULL);
 	SetDlgItemText(IDC_EDIT2, NULL);
 }
@@ -69,6 +62,5 @@ void MainDlg::OnBnClickedButton1()
 
 void MainDlg::OnBnClickedButton2()
 {
-	// TODO: Add your control notification handler code here
 	movies.DeleteItem(movies.GetNextItem(-1,LVNI_SELECTED));
 }
