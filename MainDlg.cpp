@@ -34,6 +34,7 @@ BOOL MainDlg::OnInitDialog()
 	//dodaj stupce u listu
 	movies.InsertColumn(0, "Title", LVCFMT_LEFT, 100, 20);
 	movies.InsertColumn(1, "Year", LVCFMT_CENTER, 100, 20);
+	movies.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 
 	return TRUE;
 }
