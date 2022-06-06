@@ -22,6 +22,7 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BUTTON2, &MainDlg::OnBnClickedButton2)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
@@ -58,4 +59,15 @@ void MainDlg::OnBnClickedButton1()
 
 	movies.InsertItem(count,movieTitle);
 	movies.SetItemText(count,1,movieYear); //subitem je stupac
+
+	//ocisti edit box
+	SetDlgItemText(IDC_EDIT1, NULL);
+	SetDlgItemText(IDC_EDIT2, NULL);
+}
+
+
+void MainDlg::OnBnClickedButton2()
+{
+	// TODO: Add your control notification handler code here
+	movies.DeleteItem(movies.GetNextItem(-1,LVNI_SELECTED));
 }
