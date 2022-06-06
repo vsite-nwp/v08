@@ -62,5 +62,8 @@ void MainDlg::OnBnClickedButton1()
 
 void MainDlg::OnBnClickedButton2()
 {
-	movies.DeleteItem(movies.GetNextItem(-1,LVNI_SELECTED));
+	int item = movies.GetNextItem(-1, LVNI_SELECTED);
+	if (item!=-1) {
+		movies.DeleteItem(item);
+	}
 }
