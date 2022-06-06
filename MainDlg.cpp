@@ -17,9 +17,12 @@ MainDlg::MainDlg(CWnd* pParent /*=NULL*/)
 void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LIST1, lista);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
+	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::AddButton)
+	ON_BN_CLICKED(IDC_BUTTON2, &MainDlg::DeleteButton)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
@@ -28,7 +31,38 @@ BOOL MainDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	
+	lista.InsertColumn(0, "Title", LVCFMT_LEFT, 100, 20);
+	lista.InsertColumn(1, "Year", LVCFMT_CENTER, 100, 20);
+	lista.SetExtendedStyle(LVS_EX_FULLROWSELECT);
+	GetDlgItem(IDC_BUTTON2)->EnableWindow(0);
+
 	return TRUE;
 }
 
+void MainDlg::AddButton()
+{
 
+	CString movieName;
+	CString movieYear;
+	GetDlgItemText(IDC_EDIT1, movieName);
+	GetDlgItemText(IDC_EDIT2, movieYear);
+	int inputIndex = lista.GetItemCount();
+
+	if (movieName == "" || movieYear == "")
+		return;
+
+	lista.InsertItem(inputIndex, movieName);
+	lista.SetItemText(inputIndex, 1, movieYear);
+	SetDlgItemText(IDC_EDIT1, "");
+	SetDlgItemText(IDC_EDIT2, "");
+	GetDlgItem(IDC_BUTTON2)->EnableWindow(1);
+
+}
+
+
+void MainDlg::DeleteButton()
+{
+	lista.DeleteItem(lista.GetNextItem(-1, LVNI_SELECTED));
+	if (lista.GetItemCount() == 0)
+		GetDlgItem(IDC_BUTTON2)->EnableWindow(0);
+}
