@@ -10,7 +10,7 @@ static char THIS_FILE[] = __FILE__;
 
 MainDlg::MainDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(MainDlg::IDD, pParent)
-	, titles(_T(""))
+	
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }

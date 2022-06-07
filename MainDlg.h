@@ -10,7 +10,7 @@ public:
 	CListCtrl List;
 	afx_msg void AddButton();
 	afx_msg void DeleteButton();
-	CString titles;
+	
 
 protected:
 	void DoDataExchange(CDataExchange* pDX) override;
