@@ -29,8 +29,8 @@ END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
 {
-	SetDlgItemText(IDC_EDIT1, "Unesite ime filma");
-	SetDlgItemText(IDC_EDIT2, "Unesite godinu filma");
+	SetDlgItemText(IDC_EDIT1, "Enter name of the movie");
+	SetDlgItemText(IDC_EDIT2, "Enter year of the movie");
 	CDialog::OnInitDialog();
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
@@ -44,10 +44,9 @@ BOOL MainDlg::OnInitDialog()
 
 void MainDlg::OnBnClickedButtonAdd()
 {
-	CString movie_name, movie_year;
 	GetDlgItemText(IDC_EDIT1, movie_name);
 	GetDlgItemText(IDC_EDIT2, movie_year);
-	int index = Movies.GetItemCount();
+	const int index = Movies.GetItemCount();
 	if (movie_name.IsEmpty() || movie_year.IsEmpty()) {
 		MessageBox("ENTER NAME AND YEAR!", "Warning", MB_OK | MB_ICONWARNING);
 	}

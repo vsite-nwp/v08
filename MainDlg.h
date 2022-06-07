@@ -15,6 +15,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CListCtrl Movies;
+	CString movie_name, movie_year;
 	afx_msg void OnBnClickedButtonAdd();
 	afx_msg void OnBnClickedButtonDelete();
 };
