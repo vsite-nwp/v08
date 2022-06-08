@@ -32,8 +32,8 @@ BOOL MainDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 	SetIcon(m_hIcon, TRUE);			
 	SetIcon(m_hIcon, FALSE);		
-	list.InsertColumn(1, _T("Title"), LVCFMT_LEFT, 170);
-	list.InsertColumn(2, _T("Year"), LVCFMT_CENTER, 80);
+	list.InsertColumn(0, _T("Title"), LVCFMT_LEFT, 170);
+	list.InsertColumn(1, _T("Year"), LVCFMT_CENTER, 80);
 	list.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 	
 	return TRUE;
