@@ -13,4 +13,9 @@ protected:
 	HICON m_hIcon;
 	BOOL OnInitDialog() override;
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnAddItem();
+	afx_msg void OnDeleteItem();
+private:
+	CListCtrl movieList;
 };
