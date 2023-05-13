@@ -17,5 +17,4 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CListCtrl listCtrl;
-	UINT32 listSize = 0;
 };

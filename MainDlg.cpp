@@ -22,6 +22,8 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 
 void MainDlg::OnAdd() {
 	CString fieldValue;
+	int listSize = listCtrl.GetItemCount();
+
 	// add row and set movie title
 	GetDlgItemText(IDC_EDIT1, fieldValue);
 	listCtrl.InsertItem(listSize, fieldValue);
@@ -33,14 +35,14 @@ void MainDlg::OnAdd() {
 	// reset fields
 	SetDlgItemText(IDC_EDIT1, "");
 	SetDlgItemText(IDC_EDIT2, "");
-	++listSize;
 }
 
 void MainDlg::OnDelete() {
-	if (listSize > 0) {
+	if (listCtrl.GetItemCount() > 0) {
 		// decrese size counter only if delete was successful
-		if(listCtrl.DeleteItem(listCtrl.GetNextItem(-1, LVNI_SELECTED)) != 0)
-			--listSize;
+		int toDelete = listCtrl.GetNextItem(-1, LVNI_SELECTED);
+		if (toDelete != -1)
+			listCtrl.DeleteItem(toDelete);
 		return;
 	}
 }
@@ -53,9 +55,9 @@ END_MESSAGE_MAP()
 BOOL MainDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
-	listCtrl.InsertColumn(0, "Title", LVCFMT_RIGHT, 100, -1);
+	listCtrl.InsertColumn(0, "Title", LVCFMT_LEFT, 100, -1);
 	listCtrl.InsertColumn(1, "Year", LVCFMT_RIGHT, 100, -1);
-	listCtrl.SetExtendedStyle(GetExStyle() | LVS_EX_FULLROWSELECT);
+	listCtrl.SetExtendedStyle(listCtrl.GetExtendedStyle() | LVS_EX_FULLROWSELECT);
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	
