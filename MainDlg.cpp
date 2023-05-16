@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "v8.h"
 #include "MainDlg.h"
+#include <string>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -17,17 +18,37 @@ MainDlg::MainDlg(CWnd* pParent /*=NULL*/)
 void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_LIST1, itemList);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
+	ON_BN_CLICKED(IDC_BUTTON1, MainDlg::OnAdd)
+	ON_BN_CLICKED(IDC_BUTTON2, MainDlg::OnRemove)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
+	itemList.InsertColumn(0, "Title", 0, 150);
+	itemList.InsertColumn(1, "Year", 0, 40);
+	itemList.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
-	
+
 	return TRUE;
+}
+
+void MainDlg::OnAdd() {
+	CString title;
+	CString year;
+	GetDlgItemText(IDC_EDIT1, title);
+	GetDlgItemText(IDC_EDIT2, year);
+	itemList.InsertItem(counter, title);
+	itemList.SetItemText(counter++, 1, year);
+}
+
+void MainDlg::OnRemove()
+{
+	itemList.DeleteItem(itemList.GetNextItem(-1, LVNI_SELECTED));
 }
 
