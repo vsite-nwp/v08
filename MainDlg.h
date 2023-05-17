@@ -14,7 +14,6 @@ protected:
 	BOOL OnInitDialog() override;
 	void OnAdd();
 	void OnRemove();
-	int counter{ 0 };
 	DECLARE_MESSAGE_MAP()
 public:
 	CListCtrl itemList;

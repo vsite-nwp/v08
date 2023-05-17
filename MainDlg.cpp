@@ -29,8 +29,8 @@ END_MESSAGE_MAP()
 BOOL MainDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
-	itemList.InsertColumn(0, "Title", 0, 150);
-	itemList.InsertColumn(1, "Year", 0, 40);
+	itemList.InsertColumn(0, "Title", LVCFMT_LEFT, 150);
+	itemList.InsertColumn(1, "Year", LVCFMT_LEFT, 40);
 	itemList.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
@@ -43,12 +43,14 @@ void MainDlg::OnAdd() {
 	CString year;
 	GetDlgItemText(IDC_EDIT1, title);
 	GetDlgItemText(IDC_EDIT2, year);
-	itemList.InsertItem(counter, title);
-	itemList.SetItemText(counter++, 1, year);
+	itemList.InsertItem(itemList.GetItemCount(), title);
+	itemList.SetItemText(itemList.GetItemCount() - 1, 1, year);
 }
 
 void MainDlg::OnRemove()
 {
-	itemList.DeleteItem(itemList.GetNextItem(-1, LVNI_SELECTED));
+	if (itemList.GetSelectedCount() > 0) {
+		itemList.DeleteItem(itemList.GetNextItem(-1, LVNI_SELECTED));
+	}
 }
 
