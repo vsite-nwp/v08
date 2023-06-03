@@ -65,18 +65,10 @@ void MainDlg::OnAdd()
 
 void MainDlg::OnDelete() 
 {
-	if (list_size <= 0 || list_control.GetItemCount() <= 0)
+	if (list_control.GetItemCount() <= 0)
 		return;
 
-	if (list_control.DeleteItem(list_control.GetNextItem(-1, LVNI_SELECTED)) != 0)
-	{
-		list_size--;
-	}
-
-	const int delete_item_id = list_control.GetNextItem(-1, LVNI_SELECTED);
-	if (delete_item_id != -1)
-	{
-		list_control.DeleteItem(delete_item_id);
-	}
+	if (list_control.GetSelectedCount() > 0)
+		list_control.DeleteItem(list_control.GetNextItem(-1, LVNI_SELECTED));
 }
 
