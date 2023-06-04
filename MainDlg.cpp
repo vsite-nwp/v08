@@ -59,15 +59,10 @@ void MainDlg::OnAdd()
 
 	GetDlgItemText(IDC_EDIT2, fieldValue);
 	list_control.SetItemText(item_count, 1, fieldValue);
-
-	list_size++;
 }
 
 void MainDlg::OnDelete() 
 {
-	if (list_control.GetItemCount() <= 0)
-		return;
-
 	if (list_control.GetSelectedCount() > 0)
 		list_control.DeleteItem(list_control.GetNextItem(-1, LVNI_SELECTED));
 }

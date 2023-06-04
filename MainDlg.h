@@ -13,7 +13,6 @@ protected:
 	HICON m_hIcon;
 	BOOL OnInitDialog() override;
 	CListCtrl list_control;
-	uint32_t list_size;
 	DECLARE_MESSAGE_MAP()
 	void OnAdd();
 	void OnDelete();
