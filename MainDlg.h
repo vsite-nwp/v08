@@ -7,6 +7,11 @@ class MainDlg : public CDialog
 public:
 	MainDlg(CWnd* pParent = NULL);	// standard constructor
 	enum { IDD = IDD_V8_DIALOG };
+	afx_msg void OnBnClickedButtonAdd();
+	afx_msg void OnBnClickedButtonDelete();
+
+private:
+	CListCtrl m_list;
 
 protected:
 	void DoDataExchange(CDataExchange* pDX) override;
