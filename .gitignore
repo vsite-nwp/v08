@@ -10,3 +10,5 @@
 *.db-shm
 *.db-wal
 *.aps
+/.vs/v8/FileContentIndex
+/.vs/Labos8/v17
