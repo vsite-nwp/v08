@@ -8,7 +8,7 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-MainDlg::MainDlg(CWnd* pParent /*=NULL*/)
+MainDlg::MainDlg(CWnd* pParent)
 	: CDialog(MainDlg::IDD, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
@@ -30,10 +30,10 @@ END_MESSAGE_MAP()
 BOOL MainDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
-	SetIcon(m_hIcon, TRUE);			// Set big icon
-	SetIcon(m_hIcon, FALSE);		// Set small icon
-	Lista.InsertColumn(0, "Title", 0, 80, 1);
-	Lista.InsertColumn(0, "Year", 0, 80, 1);
+	SetIcon(m_hIcon, TRUE);			
+	SetIcon(m_hIcon, FALSE);		
+	Lista.InsertColumn(0, "Title", LVCFMT_LEFT, 80, 1);
+	Lista.InsertColumn(1, "Year", LVCFMT_LEFT, 80, 1);
 	Lista.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 	return TRUE;
 }
@@ -49,13 +49,15 @@ void MainDlg::Add()
 	int n = Lista.GetItemCount();
 	Lista.InsertItem(n,title);
 	Lista.SetItemText(n,1,year);
-	// TODO: Add your control notification handler code here
+	
 }
 
 
 void MainDlg::Delete()
 {
 	int n = Lista.GetNextItem(-1, LVNI_SELECTED);
-	Lista.DeleteItem(n);	
-		// TODO: Add your control notification handler code here
+	if (n != -1)
+	{
+		Lista.DeleteItem(n);
+	}
 }
