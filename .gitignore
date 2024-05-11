@@ -10,3 +10,7 @@
 *.db-shm
 *.db-wal
 *.aps
+/.vs/v8/v17/TestStore/0
+/.vs/v8/FileContentIndex
+/v8.sln
+/.gitignore
