@@ -21,6 +21,7 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
+	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnBnClickedButton1)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
@@ -45,3 +46,11 @@ BOOL MainDlg::OnInitDialog()
 	return TRUE;
 }
 
+void MainDlg::OnBnClickedButton1()
+{
+	CString Title, Year;
+	GetDlgItemText(IDC_EDIT1, Title);
+	GetDlgItemText(IDC_EDIT2, Year);
+	list.InsertItem(0, Title);
+	list.SetItemText(0, 1, Year);
+}
