@@ -33,24 +33,29 @@ BOOL MainDlg::OnInitDialog()
 
 	list.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 
+	// Structure for column information.
 	struct columnInfo {
 		int mask;
 		int cx;
 		LPSTR pszText;
 	};
 
-	columnInfo columns[] = {
+	// Write column information.
+	std::vector<columnInfo> columns = {
 		{LVCF_WIDTH | LVCF_TEXT, 200, "Title"},
 		{LVCF_WIDTH | LVCF_TEXT, 50, "Year"}
 	};
 
-	for (int i = 0; i < sizeof(columns) / sizeof(columns[0]); ++i) {
-		LVCOLUMN lvColumn;
-		lvColumn.mask = columns[i].mask;
-		lvColumn.cx = columns[i].cx;
-		lvColumn.pszText = columns[i].pszText;
+	// Insert columns.
+	LVCOLUMN lvColumn;
+	int index = 0;
+	for (columnInfo i : columns) {
+		lvColumn.mask = i.mask;
+		lvColumn.cx = i.cx;
+		lvColumn.pszText = i.pszText;
 
-		list.InsertColumn(i, &lvColumn);
+		list.InsertColumn(index, &lvColumn);
+		++index;
 	}
 
 	return TRUE;
