@@ -14,8 +14,9 @@ protected:
 	BOOL OnInitDialog() override;
 	DECLARE_MESSAGE_MAP()
 public:
-	// DDX_Control on list control
 	CListCtrl list;
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnBnClickedButton2();
+	CEdit edit2;
+	afx_msg void OnEnUpdateEdit2();
 };

@@ -18,11 +18,13 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST1, list);
+	DDX_Control(pDX, IDC_EDIT2, edit2);
 }
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_BUTTON2, &MainDlg::OnBnClickedButton2)
+	ON_EN_UPDATE(IDC_EDIT2, &MainDlg::OnEnUpdateEdit2)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
@@ -32,6 +34,7 @@ BOOL MainDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	list.SetExtendedStyle(LVS_EX_FULLROWSELECT);
+	edit2.LimitText(4);
 
 	// Structure for column information.
 	struct columnInfo {
@@ -42,8 +45,8 @@ BOOL MainDlg::OnInitDialog()
 
 	// Write column information.
 	std::vector<columnInfo> columns = {
-		{LVCF_WIDTH | LVCF_TEXT, 200, "Title"},
-		{LVCF_WIDTH | LVCF_TEXT, 50, "Year"}
+		{LVCF_WIDTH | LVCF_TEXT, 200, _T("Title")},
+		{LVCF_WIDTH | LVCF_TEXT, 50, _T("Year")}
 	};
 
 	// Insert columns.
@@ -61,18 +64,40 @@ BOOL MainDlg::OnInitDialog()
 	return TRUE;
 }
 
-
 void MainDlg::OnBnClickedButton1()
 {
-	CString Title, Year;
-	GetDlgItemText(IDC_EDIT1, Title);
-	GetDlgItemText(IDC_EDIT2, Year);
-	list.InsertItem(0, Title);
-	list.SetItemText(0, 1, Year);
+	CString title, year;
+	GetDlgItemText(IDC_EDIT1, title);
+	GetDlgItemText(IDC_EDIT2, year);
+	if (title.GetLength() != 0 && year.GetLength() != 0) {
+		list.InsertItem(0, title);
+		list.SetItemText(0, 1, year);
+	}
+	else {
+		MessageBox(_T("You must enter title and year."), _T("Error"), MB_ICONEXCLAMATION);
+	}
 }
-
 
 void MainDlg::OnBnClickedButton2()
 {
 	list.DeleteItem(list.GetNextItem(-1, LVNI_SELECTED));
+}
+
+bool is_number(const CString& text) {
+	for (int i = 0; i < text.GetLength(); ++i) {
+		if (!isdigit(text[i])) {
+			return false;
+		}
+	}
+	return true;
+}
+
+void MainDlg::OnEnUpdateEdit2()
+{
+	CString text;
+	GetDlgItemText(IDC_EDIT2, text);
+
+	if (!is_number(text)) {
+		SetDlgItemText(IDC_EDIT2, _T(""));
+	}
 }
