@@ -33,21 +33,29 @@ BOOL MainDlg::OnInitDialog()
 
 	list.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 
-	LVCOLUMN lvColumn1;
-	lvColumn1.mask = LVCF_TEXT | LVCF_WIDTH;
-	lvColumn1.cx = 200;
-	lvColumn1.pszText = _T("Title");
-	
-	LVCOLUMN lvColumn2;
-	lvColumn2.mask = LVCF_TEXT | LVCF_WIDTH;
-	lvColumn2.cx = 50;
-	lvColumn2.pszText = _T("Year");
+	struct columnInfo {
+		int mask;
+		int cx;
+		LPSTR pszText;
+	};
 
-	list.InsertColumn(0, &lvColumn1);
-	list.InsertColumn(1, &lvColumn2);
+	columnInfo columns[] = {
+		{LVCF_WIDTH | LVCF_TEXT, 200, "Title"},
+		{LVCF_WIDTH | LVCF_TEXT, 50, "Year"}
+	};
+
+	for (int i = 0; i < sizeof(columns) / sizeof(columns[0]); ++i) {
+		LVCOLUMN lvColumn;
+		lvColumn.mask = columns[i].mask;
+		lvColumn.cx = columns[i].cx;
+		lvColumn.pszText = columns[i].pszText;
+
+		list.InsertColumn(i, &lvColumn);
+	}
 
 	return TRUE;
 }
+
 
 void MainDlg::OnBnClickedButton1()
 {
