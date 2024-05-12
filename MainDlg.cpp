@@ -22,6 +22,7 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BUTTON2, &MainDlg::OnBnClickedButton2)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
@@ -29,6 +30,8 @@ BOOL MainDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
+
+	list.SetExtendedStyle(LVS_EX_FULLROWSELECT);
 
 	LVCOLUMN lvColumn1;
 	lvColumn1.mask = LVCF_TEXT | LVCF_WIDTH;
@@ -53,4 +56,10 @@ void MainDlg::OnBnClickedButton1()
 	GetDlgItemText(IDC_EDIT2, Year);
 	list.InsertItem(0, Title);
 	list.SetItemText(0, 1, Year);
+}
+
+
+void MainDlg::OnBnClickedButton2()
+{
+	list.DeleteItem(list.GetNextItem(-1, LVNI_SELECTED));
 }

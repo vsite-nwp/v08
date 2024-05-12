@@ -17,4 +17,5 @@ public:
 	// DDX_Control on list control
 	CListCtrl list;
 	afx_msg void OnBnClickedButton1();
+	afx_msg void OnBnClickedButton2();
 };
