@@ -52,7 +52,7 @@ BOOL MainDlg::OnInitDialog()
 	// Insert columns.
 	LVCOLUMN lvColumn;
 	int index = 0;
-	for (columnInfo i : columns) {
+	for (const columnInfo& i : columns) {
 		lvColumn.mask = i.mask;
 		lvColumn.cx = i.cx;
 		lvColumn.pszText = i.pszText;
@@ -69,7 +69,7 @@ void MainDlg::OnBnClickedButton1()
 	CString title, year;
 	GetDlgItemText(IDC_EDIT1, title);
 	GetDlgItemText(IDC_EDIT2, year);
-	if (title.GetLength() != 0 && year.GetLength() != 0) {
+	if (!title.IsEmpty() && !year.IsEmpty()) {
 		int index = list.GetItemCount();
 		list.InsertItem(index, title);
 		list.SetItemText(index, 1, year);
@@ -83,24 +83,14 @@ void MainDlg::OnBnClickedButton1()
 
 void MainDlg::OnBnClickedButton2()
 {
-	list.DeleteItem(list.GetNextItem(-1, LVNI_SELECTED));
-}
-
-bool is_number(const CString& text) {
-	for (int i = 0; i < text.GetLength(); ++i) {
-		if (!isdigit(text[i])) {
-			return false;
-		}
+	const int selected = list.GetNextItem(-1, LVNI_SELECTED);
+	if (selected != -1) {
+		list.DeleteItem(selected);
 	}
-	return true;
 }
 
 void MainDlg::OnEnUpdateEdit2()
 {
 	CString text;
 	GetDlgItemText(IDC_EDIT2, text);
-
-	if (!is_number(text)) {
-		SetDlgItemText(IDC_EDIT2, _T(""));
-	}
 }
