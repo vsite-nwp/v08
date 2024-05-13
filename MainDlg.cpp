@@ -48,10 +48,9 @@ void MainDlg::addButton_Clicked() {
 	yearEdit.SetWindowText("");
 }
 
-
 void MainDlg::deleteButton_Clicked() {
 	int pos = movieDetail_list.GetNextItem(-1, LVNI_SELECTED);
-	if (pos != NULL) {
+	if (pos != -1) {
 		movieDetail_list.DeleteItem(pos);
 	}
 }
