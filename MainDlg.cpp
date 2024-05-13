@@ -35,25 +35,24 @@ BOOL MainDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	movieDetail_list.InsertColumn(0, _T("Title"), LVCFMT_LEFT, 135);
 	movieDetail_list.InsertColumn(1, _T("Year"), LVCFMT_LEFT, 55);
-	
+	movieDetail_list.SetExtendedStyle(movieDetail_list.GetExtendedStyle() | LVS_EX_FULLROWSELECT);
 	return TRUE;
 }
 
 void MainDlg::addButton_Clicked() {
-	CString s;
+	CString s; CString i;
 	titleEdit.GetWindowText(s);
-	int row = movieDetail_list.InsertItem(0, s);
-	yearEdit.GetWindowText(s);
-	movieDetail_list.SetItemText(row, 1, s);
+	yearEdit.GetWindowText(i);
+	movieDetail_list.SetItemText(movieDetail_list.InsertItem(movieDetail_list.GetItemCount(), s), 1, i);
 	titleEdit.SetWindowText("");
 	yearEdit.SetWindowText("");
 }
 
 
 void MainDlg::deleteButton_Clicked() {
-	POSITION pos = movieDetail_list.GetFirstSelectedItemPosition();
-	if (pos != nullptr) {
-		movieDetail_list.DeleteItem(movieDetail_list.GetNextSelectedItem(pos));
+	int pos = movieDetail_list.GetNextItem(-1, LVNI_SELECTED);
+	if (pos != NULL) {
+		movieDetail_list.DeleteItem(pos);
 	}
 }
 
