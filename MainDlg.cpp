@@ -70,8 +70,9 @@ void MainDlg::OnBnClickedButton1()
 	GetDlgItemText(IDC_EDIT1, title);
 	GetDlgItemText(IDC_EDIT2, year);
 	if (title.GetLength() != 0 && year.GetLength() != 0) {
-		list.InsertItem(0, title);
-		list.SetItemText(0, 1, year);
+		int index = list.GetItemCount();
+		list.InsertItem(index, title);
+		list.SetItemText(index, 1, year);
 		SetDlgItemText(IDC_EDIT1, _T(""));
 		SetDlgItemText(IDC_EDIT2, _T(""));
 	}
