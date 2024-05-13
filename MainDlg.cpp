@@ -35,6 +35,7 @@ BOOL MainDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	movies_list.InsertColumn(0, _T("Title"), LVCFMT_LEFT, 135);
 	movies_list.InsertColumn(1, _T("Year"), LVCFMT_LEFT, 55);
+	movies_list.SetExtendedStyle(movies_list.GetExtendedStyle() | LVS_EX_FULLROWSELECT);
 
 	return TRUE;
 }
@@ -46,9 +47,10 @@ void MainDlg::OnAddButtonClicked()
 	// Add your control notification handler code here
 	CString s;
 	title_edit.GetWindowText(s);
-	int row = movies_list.InsertItem(0, s);
+	int n_item = movies_list.GetItemCount();
+	movies_list.InsertItem(n_item, s);
 	year_edit.GetWindowText(s);
-	movies_list.SetItemText(row, 1, s);
+	movies_list.SetItemText(n_item, 1, s);
 	title_edit.SetWindowText("");
 	year_edit.SetWindowText("");
 
@@ -57,9 +59,9 @@ void MainDlg::OnAddButtonClicked()
 
 void MainDlg::OnDeleteButtonClicked()
 {
-	POSITION pos = movies_list.GetFirstSelectedItemPosition();
-	if (pos != nullptr) {
-		movies_list.DeleteItem(movies_list.GetNextSelectedItem(pos));
+	int selected = movies_list.GetNextItem(-1, LVNI_SELECTED);
+	if (selected != -1) {
+		movies_list.DeleteItem(selected);
 	}
 
 }
