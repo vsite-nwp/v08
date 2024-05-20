@@ -13,4 +13,8 @@ protected:
 	HICON m_hIcon;
 	BOOL OnInitDialog() override;
 	DECLARE_MESSAGE_MAP()
+public:
+	CListCtrl LControl;
+	afx_msg void CB1();
+	afx_msg void CL2();
 };
