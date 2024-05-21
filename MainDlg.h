@@ -19,5 +19,4 @@ public:
 	CEdit title_edit;
 	CEdit year_edit;
 	CListCtrl movies_list;
-	afx_msg void OnDeleteAllClicked();
 };

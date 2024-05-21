@@ -25,7 +25,7 @@ void MainDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(MainDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON1, &MainDlg::OnAddButtonClicked)
 	ON_BN_CLICKED(IDC_BUTTON2, &MainDlg::OnDeleteButtonClicked)
-	ON_BN_CLICKED(IDC_BUTTON3, &MainDlg::OnDeleteAllClicked)
+	//ON_BN_CLICKED(IDC_BUTTON3, &MainDlg::OnDeleteAllClicked)
 END_MESSAGE_MAP()
 
 BOOL MainDlg::OnInitDialog()
@@ -52,7 +52,6 @@ void MainDlg::OnAddButtonClicked()
 
 }
 
-
 void MainDlg::OnDeleteButtonClicked()
 {
 	int selected = movies_list.GetNextItem(-1, LVNI_SELECTED);
@@ -60,11 +59,6 @@ void MainDlg::OnDeleteButtonClicked()
 		movies_list.DeleteItem(selected);
 	}
 
-}
+} 
 
-
-void MainDlg::OnDeleteAllClicked()
-{
-	movies_list.DeleteAllItems();
-}
 
