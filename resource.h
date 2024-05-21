@@ -10,7 +10,6 @@
 #define IDC_BUTTON1                     1003
 #define IDC_BUTTON2                     1004
 
-
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
