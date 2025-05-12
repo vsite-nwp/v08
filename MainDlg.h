@@ -1,6 +1,7 @@
 #pragma once
 
 #include "resource.h"	
+#include "afxcmn.h"  // Potrebno za CListCtrl
 
 class MainDlg : public CDialog
 {
@@ -13,4 +14,9 @@ protected:
 	HICON m_hIcon;
 	BOOL OnInitDialog() override;
 	DECLARE_MESSAGE_MAP()
+
+public:
+	CListCtrl m_listCtrl;
+	afx_msg void OnBnClickedButton1();
+	afx_msg void OnBnClickedButton2();
 };

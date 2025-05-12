@@ -164,16 +164,17 @@ EXSTYLE WS_EX_APPWINDOW
 CAPTION "NWP 8"
 FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
-    CONTROL         "List1",IDC_LIST1,"SysListView32",LVS_REPORT | 
-                    LVS_SINGLESEL | WS_BORDER | WS_TABSTOP,7,18,130,134
-    EDITTEXT        IDC_EDIT1,151,18,67,14,ES_AUTOHSCROLL
-    EDITTEXT        IDC_EDIT2,151,54,67,14,ES_AUTOHSCROLL
-    LTEXT           "&Title",IDC_STATIC,152,7,14,8
-    LTEXT           "&Year",IDC_STATIC,151,43,16,8
-    LTEXT           "&Movies",IDC_STATIC,7,7,24,8
-    PUSHBUTTON      "&Add",IDC_BUTTON1,151,86,50,14
-    PUSHBUTTON      "&Delete",IDC_BUTTON2,151,108,50,14
+    CONTROL         "List1", IDC_LIST1, "SysListView32", LVS_REPORT |
+    LVS_SINGLESEL | WS_BORDER | WS_TABSTOP, 7, 18, 130, 134
+    EDITTEXT        IDC_EDIT1, 151, 18, 67, 14, ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2, 151, 54, 67, 14, ES_AUTOHSCROLL
+    LTEXT           "&Title", IDC_STATIC, 152, 7, 14, 8
+    LTEXT           "&Year", IDC_STATIC, 151, 43, 16, 8
+    LTEXT           "&Movies", IDC_STATIC, 7, 7, 24, 8
+    PUSHBUTTON      "&Add", IDC_BUTTON1, 151, 86, 50, 14
+    PUSHBUTTON      "&Delete", IDC_BUTTON2, 151, 108, 50, 14
 END
+
 
 #endif    // English (U.S.) resources
 /////////////////////////////////////////////////////////////////////////////
