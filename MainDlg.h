@@ -7,6 +7,9 @@ class MainDlg : public CDialog
 public:
 	MainDlg(CWnd* pParent = NULL);
 	enum { IDD = IDD_V8_DIALOG };
+	CListCtrl movies;
+	afx_msg void OnAdd();
+	afx_msg void OnDelete();
 
 protected:
 	void DoDataExchange(CDataExchange* pDX) override;
