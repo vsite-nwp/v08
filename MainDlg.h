@@ -1,6 +1,6 @@
 #pragma once
 
-#include "resource.h"	
+#include "resource.h"
 
 class MainDlg : public CDialog
 {
@@ -13,4 +13,13 @@ protected:
 	HICON m_hIcon;
 	BOOL OnInitDialog() override;
 	DECLARE_MESSAGE_MAP()
+
+private:
+	CListCtrl m_moviesList;
+
+	bool IsValidYear(const CString& year);
+	CString GetText(int editId);
+
+	afx_msg void OnAddClicked();
+	afx_msg void OnDeleteClicked();
 };
