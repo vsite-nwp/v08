@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "v8.h"
 #include "MainDlg.h"
+#include <algorithm>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -28,22 +29,25 @@ END_MESSAGE_MAP()
 
 void MainDlg::AddItem() {
 	CString title;
-	CString year;
+	int year;
 
 	GetDlgItemText(IDC_EDIT1, title);
-	GetDlgItemText(IDC_EDIT2, year);
+	year = GetDlgItemInt(IDC_EDIT2);
+
+	CString yearStr;
+	yearStr.Format(_T("%d"), year);
 
 	auto count = list_control.GetItemCount();
 
-	if (title && atoi(year)) {
+	if (title != "") {
 		list_control.InsertItem(count, title);
-		list_control.SetItemText(count, 1, year);
+		list_control.SetItemText(count, 1, yearStr);
 	}
 }
 
 void MainDlg::DeleteItem() {
-	auto index = list_control.GetNextItem(NULL, LVNI_SELECTED);
-	if (index != NULL) {
+	auto index = list_control.GetNextItem(-1, LVNI_SELECTED);
+	if (index != -1) {
 		list_control.DeleteItem(index);
 	}
 }
